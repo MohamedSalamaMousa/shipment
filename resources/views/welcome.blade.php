@@ -11,12 +11,15 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+
+                {{-- {{ session('user_data')['name'] }} --}}
+
+                {{-- <form action="{{ route('logout') }}" method="POST" class="d-inline">
                     @csrf
                     <button type="submit" class="btn btn-danger">
                         تسجيل الخروج
                     </button>
-                </form>
+                </form> --}}
                 <div class="form-track-group input-group col-md-12" id="divTrackingNumbers"></div>
 
                 <div class="input-wrap">

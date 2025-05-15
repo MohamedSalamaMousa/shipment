@@ -12,6 +12,8 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
     </script>
 
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script>
         window.addEventListener("DOMContentLoaded", () => {
             const loginBtn = document.getElementById("show-login-form");
@@ -32,6 +34,7 @@
             });
         });
     </script>
+
     @include('layouts.footer')
 </body>
 

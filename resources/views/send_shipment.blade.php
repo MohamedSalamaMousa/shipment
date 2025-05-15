@@ -156,7 +156,7 @@
 
 
             <!-- Step 3: تفاصيل الشحنة -->
-            <div class="row g-3 step-content" data-step="3">
+            <div class="row g-3 align-items-center step-content" data-step="3">
                 <h5 class="fw-bold text-center mb-4">تفاصيل الشحنة</h5>
 
                 <div class="col-md-4">
@@ -173,12 +173,19 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label class="form-label">عدد القطع *</label>
-                    <input type="number" class="form-control" value="1" required />
+                    <label class="form-label">اختر التحصيل</label>
+                    <select class="form-select select-change" name="from_change" required>
+                        {{-- default value --}}
+                        <option selected disabled>اختر التحصيل</option>
+                        <option>Default 1</option>
+                        <option>Default 2</option>
+                        <option>Default 3</option>
+                        <option>Default 4</option>
+                    </select>
                 </div>
 
                 <!-- نوع الشحنة -->
-                <div class="col-12 mt-4">
+                {{-- <div class="col-12 mt-4">
                     <label class="form-label d-block mb-2">نوع الشحنة</label>
                     <div class="d-flex justify-content-center gap-4 flex-wrap">
                         <!-- طرد -->
@@ -197,17 +204,17 @@
                             <div class="fw-bold">وثائق</div>
                         </label>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- تنبيه -->
-                <div class="col-12 text-center mt-4">
+                {{-- <div class="col-12 text-center mt-4">
                     <p class="text-danger small">
                         لست متأكدًا أن المواد مقبولة للشحن؟ تحقق من قائمة المواد المحظورة
                         <a href="#" class="text-danger fw-bold text-decoration-underline">هنا</a>.<br />
                         الرجاء التأكد من الوزن بعد التغليف لتجنب أي تأخير في التوصيل. قد
                         يتغير السعر في حالة وجود اختلاف في الوزن.
                     </p>
-                </div>
+                </div> --}}
 
                 <!-- Navigation Buttons -->
                 <div class="col-12 d-flex justify-content-between mt-3">
@@ -230,8 +237,12 @@
 
             // Show the current step content and hide the others
             contents.forEach((content) => {
-                content.style.display =
-                    content.dataset.step == currentStep ? "block" : "none";
+                if (content.dataset.step == currentStep) {
+                    // If current step is 3, use display: flex, otherwise use display: block
+                    content.style.display = currentStep === 3 ? "flex" : "block";
+                } else {
+                    content.style.display = "none";
+                }
             });
 
             // Update the step indicator (active/completed)
@@ -268,6 +279,10 @@
 
         window.addEventListener("DOMContentLoaded", () => {
             updateStepUI();
+            $('.select-change').select2({
+                placeholder: "اختر التحصيل",
+                dir: "rtl"
+            });
         });
     </script>
 @endsection

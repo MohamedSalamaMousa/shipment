@@ -35,10 +35,11 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">الدولة المرسل اليها *</label>
-                            <select name="country" class="form-select">
+                            <select id="country" name="country" class="form-select">
                                 @php
                                     $countries = config('countries');
                                 @endphp
+                                <option selected disabled>اختر الدولة</option>
                                 @foreach ($countries as $country)
                                     <option value="{{ $country }}">{{ $country }}</option>
                                 @endforeach
@@ -64,7 +65,7 @@
                         <div class="col-md-4">
                             <label class="form-label">المحافظة المرسل منها *</label>
                             <select class="form-select select-governorate" name="from_governorate" required>
-                                <option></option>
+                                <option selected disabled>اختر المحافظة</option>
                                 @php
                                     $governorates = config('governorates');
                                 @endphp
@@ -78,7 +79,7 @@
                         <div class="col-md-4">
                             <label class="form-label">المحافظة المرسل اليها *</label>
                             <select class="form-select select-governorate" name="to_governorate" required>
-                                <option></option>
+                                <option selected disabled> اختر المحافظة</option>
                                 @foreach ($governorates as $gov)
                                     <option value="{{ $gov }}">{{ $gov }}</option>
                                 @endforeach
@@ -113,6 +114,11 @@
         $(document).ready(function() {
             // تفعيل select2 (إذا كنت تستخدمها)
             $('.select-governorate').select2({
+                placeholder: "اختر المحافظة",
+                dir: "rtl"
+            });
+
+            $('#country').select2({
                 placeholder: "اختر المحافظة",
                 dir: "rtl"
             });
