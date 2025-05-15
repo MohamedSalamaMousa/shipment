@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  direction: rtl;
+  /* text-align: right; */
+  font-family: "Tajawal", "Cairo", sans-serif; /* Example Arabic fonts */
+}
+
+.header-btn {
+  color: inherit;
+  text-decoration: inherit;
+  cursor: inherit;
+  color: #fff;
+  display: inline-block;
+  text-transform: none;
+  background-color: #dc291e;
+  font-size: 1em;
+  line-height: 1.2;
+  padding: 0.6em 1.5em;
+  border: 0 none;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-align: center;
+  border-radius: 40px;
+  transition: all 0.2s linear;
+  margin: 0 10px;
+  font-weight: 700 !important;
+}
+
+.header-btn:hover {
+  text-decoration: none;
+  background-color: #c01504;
+}
+
+.header-btn.nav-hover-btn {
+  font-size: 13px !important;
+  width: 132px;
+  height: 38px;
+}
+
+.nav-tabs .nav-link {
+  border: none !important;
+  color: #c01504 !important;
+}
+
+/* main-content */
+.hero-content h2 {
+  color: #dc291e;
+  font-size: 58px;
+  line-height: 77px;
+  font-weight: 700;
+  text-align: right;
+  padding-bottom: 35px;
+}
+
+a {
+  text-decoration: none;
+  color: #c01504;
+}
+
+.hero-content .input-wrap {
+  position: relative;
+  max-width: 592px;
+}
+
+.latest-home-slider .form-track-group.input-group {
+  padding-right: 0;
+  padding-bottom: 20px;
+}
+
+.hero-content .form-control {
+  box-shadow: 0 6px 16px #e8e8e8b5;
+  opacity: 1;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 6px;
+  height: 73px;
+  padding: 12px 70px 12px 172px;
+  background-image: url(/Sitefinity/WebsiteTemplates/aramex/App_Themes/aramex/Images/svg/slider-ic-schedule.svg);
+  background-repeat: no-repeat;
+  background-position: center right 26px;
+  border: 0;
+  caret-color: #dc291e;
+}
+
+.hero-content .btn-primary {
+  outline: 0;
+  box-shadow: none !important;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #dc291e;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 16px 34px;
+  border: 0;
+  position: absolute;
+  top: 11px;
+  left: 20px;
+}
+
+/* Home Options */
+
+#main-content {
+  background-color: #e9ecef !important;
+}
+
+.home-options .row {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.first-card {
+  min-height: 160px;
+  width: 290px !important;
+}
+
+.second-card {
+  min-height: 160px;
+  width: 290px !important;
+}
+
+.third-card {
+  min-height: 160px;
+  width: 290px !important;
+}
+
+/* Prices Section */
+.nav-pills .active {
+  color: white !important;
+  background-color: #c01504 !important;
+}
+
+#prices .container {
+  background-color: #e9ecef !important;
+}
+
+/* Steps Section */
+
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 2rem;
+}
+.step {
+  text-align: center;
+  color: gray;
+}
+.step.active {
+  color: red;
+  font-weight: bold;
+}
+.step-number {
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.step.active .step-number {
+  border-color: red;
+  background-color: red;
+  color: white;
+}
+
+.btn-check:checked + .shipment-label {
+  background-color: #d32f2f;
+  color: #fff;
+  border-color: #d32f2f;
+}
+
+.btn-check:checked + .shipment-label i {
+  color: white;
+}
+
+/* Sign In */
+
+input::placeholder {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.login-form {
+  display: none;
+  z-index: 1000;
+}
+.login-form.show {
+  display: block;
+}
+
+/* Register Section */
+
+
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    text-align: right;
+  }
+}
+
+@media (min-width: 1366px) {
+  .header-btn.nav-hover-btn {
+    font-size: 13px !important;
+    width: 132px;
+    height: 38px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header-btn.nav-hover-btn {
+    font-size: 12px !important;
+    width: 125px;
+    height: 38px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .header-btn.nav-hover-btn {
+    font-size: 11px !important;
+    width: 112px;
+    height: 38px;
+  }
+}
