@@ -45,7 +45,8 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">المحافظة *</label>
-                            <select class="form-select select-governorate" name="from_governorate" required>
+                            <select id="select-governorate" class="form-select select-governorate" name="from_governorate"
+                                required>
                                 <option selected disabled>اختر المحافظة</option>
                                 @php
                                     $governorates = config('governorates');
@@ -121,9 +122,19 @@
                             <input type="text" name="additional_phone_recipient" class="form-control"
                                 placeholder="0123 456 7890" />
                         </div>
+
                         <div class="col-md-6">
                             <label class="form-label">المحافظة *</label>
-                            <input type="text" name="recipient_governorate" class="form-control" required />
+                            <select id="recipient-governorate" class="form-select recipient-governorate" name="recipient_governorate"
+                                required>
+                                <option selected disabled>اختر المحافظة</option>
+                                @php
+                                    $governorates = config('governorates');
+                                @endphp
+                                @foreach ($governorates as $gov)
+                                    <option value="{{ $gov }}">{{ $gov }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                     </div>
@@ -293,6 +304,16 @@
 
             $('#collection_method').select2({
                 placeholder: "اختر التحصيل",
+                dir: "rtl"
+            });
+
+            $('#select-governorate').select2({
+                placeholder: "اختر المحافظة",
+                dir: "rtl"
+            });
+
+            $('#recipient-governorate').select2({
+                placeholder: "اختر المحافظة",
                 dir: "rtl"
             });
 
