@@ -125,8 +125,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label">المحافظة *</label>
-                            <select id="recipient-governorate" class="form-select recipient-governorate" name="recipient_governorate"
-                                required>
+                            <select id="recipient-governorate" class="form-select recipient-governorate"
+                                name="recipient_governorate" required>
                                 <option selected disabled>اختر المحافظة</option>
                                 @php
                                     $governorates = config('governorates');
