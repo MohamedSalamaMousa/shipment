@@ -1,5 +1,57 @@
 @extends('layouts.master')
 @section('title', 'الصفحة الرئيسية')
+
+<style>
+    /* Custom styling for the success message */
+    .alert-success {
+        background-color: #d4edda;
+        /* Light green background */
+        color: #155724;
+        /* Dark green text */
+        border: 1px solid #c3e6cb;
+        /* Green border */
+        border-radius: 15px;
+        /* Rounded corners */
+        padding: 15px 20px;
+        /* Comfortable padding */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        /* Subtle shadow */
+        font-size: 16px;
+        /* Slightly larger text */
+        font-weight: 500;
+        /* Medium weight for readability */
+        text-align: center;
+        /* Center the text */
+        margin-bottom: 20px;
+        /* Space below the alert */
+        position: relative;
+        max-width: 500px;
+        /* Limit width for better readability */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Add a small icon before the success message */
+    .alert-success::before {
+        content: '\f058';
+        /* FontAwesome check-circle icon */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        color: #28a745;
+        /* Green icon */
+        margin-left: 10px;
+        /* Space between icon and text */
+        font-size: 20px;
+        vertical-align: middle;
+    }
+
+    /* Ensure the hero content has proper spacing */
+    .hero-content {
+        text-align: center;
+        padding: 20px 0;
+    }
+</style>
+
 @section('content')
     <section id="main-content" class="p-md-5 m-md-5">
         <div class="container">
@@ -7,7 +59,7 @@
             <div class="hero-content">
                 <h2>تتبع شحناتك</h2>
                 @if (session('success'))
-                    <div class="alert alert-success">
+                    <div id="successMessage" class="alert alert-success">
                         {{ session('success') }}
                     </div>
                 @endif
@@ -91,4 +143,15 @@
             </div>
         </div>
     </section>
+    <script>
+        // Hide the success message after 2 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            const successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 2000); // 2000 milliseconds = 2 seconds
+            }
+        });
+    </script>
 @endsection

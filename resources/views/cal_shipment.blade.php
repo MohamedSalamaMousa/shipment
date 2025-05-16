@@ -1,5 +1,117 @@
 @extends('layouts.master')
 @section('title', 'حساب شحنتك')
+
+
+<style>
+    .alert-info {
+        background-color: #e9f7f9;
+        /* Light cyan background */
+        color: #2c3e50;
+        /* Dark blue-gray text */
+        border: 2px solid #00c4cc;
+        /* Cyan border */
+        border-radius: 20px;
+        /* More rounded corners */
+        padding: 20px;
+        /* Increased padding for better spacing */
+        box-shadow: 0 8px 20px rgba(0, 196, 204, 0.3);
+        /* Subtle cyan shadow */
+        font-size: 16px;
+        /* Slightly larger text */
+        font-weight: 500;
+        /* Medium weight for readability */
+        text-align: center;
+        /* Center the text */
+        margin-top: 20px;
+        /* Space above the alert */
+        position: relative;
+        max-width: 600px;
+        /* Limit width for better readability */
+        margin-left: auto;
+        margin-right: auto;
+        transition: all 0.3s ease;
+        /* Smooth transition for hover/focus */
+        animation: fadeIn 0.5s ease-in-out;
+        /* Fade-in animation */
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        /* Light red background */
+        color: #721c24;
+        /* Dark red text */
+        border: 2px solid #dc3545;
+        /* Red border */
+        border-radius: 20px;
+        /* More rounded corners */
+        padding: 20px;
+        /* Increased padding */
+        box-shadow: 0 8px 20px rgba(220, 53, 69, 0.3);
+        /* Red shadow */
+        font-size: 16px;
+        /* Slightly larger text */
+        font-weight: 500;
+        /* Medium weight */
+        text-align: center;
+        /* Center the text */
+        margin-top: 20px;
+        /* Space above the alert */
+        position: relative;
+        max-width: 600px;
+        /* Limit width */
+        margin-left: auto;
+        margin-right: auto;
+        transition: all 0.3s ease;
+        /* Smooth transition */
+        animation: fadeIn 0.5s ease-in-out;
+        /* Fade-in animation */
+    }
+
+    /* Hover effect for better interaction */
+    .alert-info:hover,
+    .alert-danger:hover {
+        transform: translateY(-5px);
+        /* Slight lift on hover */
+        box-shadow: 0 12px 25px rgba(0, 196, 204, 0.4);
+        /* Enhanced shadow on hover */
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Add a small icon before the result (optional, adjust based on preference) */
+    .alert-info::before,
+    .alert-danger::before {
+        content: '\f058';
+        /* FontAwesome check-circle for info, can change for danger */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        color: #00c4cc;
+        /* Cyan for info, red for danger */
+        margin-right: 10px;
+        /* Space between icon and text */
+        font-size: 20px;
+        vertical-align: middle;
+    }
+
+    .alert-danger::before {
+        content: '\f06a';
+        /* FontAwesome times-circle for danger */
+        color: #dc3545;
+        /* Red for danger */
+    }
+</style>
+
 @section('content')
     <section id="prices" class="d-flex justify-content-center align-items-center min-vh-100">
         <div class="container p-5 shadow rounded-4">
@@ -47,7 +159,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" name="shipping_weight" class="form-control" value="0" />
+                            <input type="number" name="shipping_weight" class="form-control" min="0" />
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-danger rounded-5 mt-3">
@@ -89,8 +201,7 @@
                         <!-- الوزن -->
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" class="form-control" name="weight" min="0" value="0"
-                                required />
+                            <input type="number" class="form-control" name="weight" min="0" required />
                         </div>
 
                         <!-- زر الإرسال -->
