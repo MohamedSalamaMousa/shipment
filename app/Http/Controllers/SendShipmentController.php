@@ -11,5 +11,6 @@ class SendShipmentController extends Controller
     {
         return view('send_shipment');
     }
+    
 
 }
