@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">المحافظة *</label>
-                            <select id="select-governorate" class="form-select select-governorate" name="from_governorate"
+                            <select id="select-governorate" class="form-select select-governorate" name="sender_governorate"
                                 required>
                                 <option selected disabled>اختر المحافظة</option>
                                 @php
@@ -125,8 +125,8 @@
 
                         <div class="col-md-6">
                             <label class="form-label">المحافظة *</label>
-                            <select id="recipient-governorate" class="form-select recipient-governorate" name="recipient_governorate"
-                                required>
+                            <select id="recipient-governorate" class="form-select recipient-governorate"
+                                name="recipient_governorate" required>
                                 <option selected disabled>اختر المحافظة</option>
                                 @php
                                     $governorates = config('governorates');
@@ -183,21 +183,22 @@
 
                     <div class="col-md-4">
                         <label class="form-label">محتويات الشحنة *</label>
-                        <input type="text" class="form-control" placeholder="مثال: كتب، ملابس..." required />
+                        <input type="text" class="form-control" placeholder="مثال: كتب، ملابس..." required
+                            name='shipment_details' />
                     </div>
 
                     <div class="col-md-4">
                         <label class="form-label">الوزن الإجمالي *</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" placeholder="0" required />
+                            <input type="number" class="form-control" placeholder="0" required
+                                name='shipment_weight' />
                             <span class="input-group-text">كـج</span>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <label class="form-label">اختر التحصيل</label>
-                        <select class="form-select select-change" name="collection_method" id="collection_method"
-                            required>
+                        <select class="form-select select-change" name="collection" id="collection_method" required>
                             <option selected disabled>اختر التحصيل</option>
                             <option value="include">شامل مصاريف الشحن</option>
                             <option value="add">اضافة مصاريف الشحن</option>
@@ -214,18 +215,22 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label class="form-label">شكل رسوم التحصيل</label>
-                            <input type="text" name="collection_fee_type" class="form-control"
-                                placeholder="مثال: رسوم ثابتة، نسبة..." />
+                            <label class="form-label"> رسوم التحصيل</label>
+                            <select name="is_collection_included" class="form-select">
+                                <option selected disabled>رسوم التحصيل</option>
+                                <option value="true">اضافة رسوم التحصيل علي الشحن </option>
+                                <option value="false">عدم اضافة رسوم التحصيل علي الشحن </option>
+
+                            </select>
                         </div>
 
                         <div class="col-md-4">
                             <label class="form-label">طريقة التحصيل</label>
-                            <select id="collection_payment_method" name="collection_payment_method" class="form-select">
+                            <select id="collection_payment_method" name="collection_method" class="form-select">
                                 <option selected disabled>اختر الطريقة</option>
-                                <option value="instapay">انستا باي</option>
-                                <option value="wallet">محفظة إلكترونية</option>
-                                <option value="bank">بنك</option>
+                                <option value= "انسا باي">انستا باي</option>
+                                <option value="إلكترونية محفظة">محفظة إلكترونية</option>
+                                <option value="بنك">بنك</option>
                             </select>
                         </div>
                     </div>
@@ -235,7 +240,7 @@
                         <button type="button" class="btn btn-outline-danger" onclick="prevStep()">
                             العودة
                         </button>
-                        <button type="button" class="btn btn-danger" onclick="nextStep()">
+                        <button type="sumbit" class="btn btn-danger">
                             التالي
                         </button>
                     </div>
