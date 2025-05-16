@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalShipmentController;
 use App\Http\Controllers\SendShipmentController;
+use App\Http\Controllers\TrackingController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Http;
@@ -36,6 +37,7 @@ Route::prefix('calculate_shipment')->controller(CalShipmentController::class)->g
 
 });
 
-
+Route::get('/track', [TrackingController::class, 'showForm'])->name('track.form');
+Route::post('/track', [TrackingController::class, 'track'])->name('track');
 
 Route::get('send/shipment/', [SendShipmentController::class, 'index'])->name('send_shipment.index')->middleware('check.token');

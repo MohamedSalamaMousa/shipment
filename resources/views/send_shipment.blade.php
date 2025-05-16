@@ -174,47 +174,38 @@
 
                 <div class="col-md-4">
                     <label class="form-label">اختر التحصيل</label>
-                    <select class="form-select select-change" name="from_change" required>
-                        {{-- default value --}}
+                    <select class="form-select select-change" name="collection_method" id="collection_method" required>
                         <option selected disabled>اختر التحصيل</option>
-                        <option>Default 1</option>
-                        <option>Default 2</option>
-                        <option>Default 3</option>
-                        <option>Default 4</option>
+                        <option value="include">شامل مصاريف الشحن</option>
+                        <option value="add">اضافة مصاريف الشحن</option>
+                        <option value="only">مصاريف الشحن فقط</option>
+                        <option value="none">بدون تحصيل و بدون مصاريف شحن</option>
                     </select>
                 </div>
 
-                <!-- نوع الشحنة -->
-                {{-- <div class="col-12 mt-4">
-                    <label class="form-label d-block mb-2">نوع الشحنة</label>
-                    <div class="d-flex justify-content-center gap-4 flex-wrap">
-                        <!-- طرد -->
-                        <input type="radio" name="shipmentType" class="btn-check" id="typeBox" checked />
-                        <label for="typeBox" class="p-4 border rounded text-center shipment-label"
-                            style="cursor: pointer; width: 120px">
-                            <i class="fa-solid fa-box-open fa-2x mb-2"></i>
-                            <div class="fw-bold">طرد</div>
-                        </label>
-
-                        <!-- وثائق -->
-                        <input type="radio" name="shipmentType" class="btn-check" id="typeDoc" />
-                        <label for="typeDoc" class="p-4 border rounded text-center shipment-label"
-                            style="cursor: pointer; width: 120px">
-                            <i class="fa-solid fa-file-lines fa-2x mb-2"></i>
-                            <div class="fw-bold">وثائق</div>
-                        </label>
+                <div id="collection_fields" class="row mt-3" style="display: none;">
+                    <div class="col-md-4">
+                        <label class="form-label">قيمة التحصيل *</label>
+                        <input type="number" name="collection_value" class="form-control" placeholder="مثال: 100"
+                            min="0" />
                     </div>
-                </div> --}}
 
-                <!-- تنبيه -->
-                {{-- <div class="col-12 text-center mt-4">
-                    <p class="text-danger small">
-                        لست متأكدًا أن المواد مقبولة للشحن؟ تحقق من قائمة المواد المحظورة
-                        <a href="#" class="text-danger fw-bold text-decoration-underline">هنا</a>.<br />
-                        الرجاء التأكد من الوزن بعد التغليف لتجنب أي تأخير في التوصيل. قد
-                        يتغير السعر في حالة وجود اختلاف في الوزن.
-                    </p>
-                </div> --}}
+                    <div class="col-md-4">
+                        <label class="form-label">شكل رسوم التحصيل</label>
+                        <input type="text" name="collection_fee_type" class="form-control"
+                            placeholder="مثال: رسوم ثابتة، نسبة..." />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">طريقة التحصيل</label>
+                        <select name="collection_payment_method" class="form-select">
+                            <option selected disabled>اختر الطريقة</option>
+                            <option value="instapay">انستا باي</option>
+                            <option value="wallet">محفظة إلكترونية</option>
+                            <option value="bank">بنك</option>
+                        </select>
+                    </div>
+                </div>
 
                 <!-- Navigation Buttons -->
                 <div class="col-12 d-flex justify-content-between mt-3">
@@ -228,6 +219,27 @@
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // كودك هنا
+            document.getElementById("collection_method").addEventListener("change", function() {
+                const selected = this.value;
+                const extraFields = document.getElementById("collection_fields");
+
+                if (selected === "include" || selected === "add") {
+                    extraFields.style.display = "block";
+                } else {
+                    extraFields.style.display = "none";
+                    // مسح القيم عند الإخفاء
+                    extraFields.querySelectorAll("input, select").forEach(input => {
+                        input.value = "";
+                    });
+                }
+            });
+        });
+    </script>
+
+
     <script>
         let currentStep = 1;
 
