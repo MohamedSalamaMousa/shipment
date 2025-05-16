@@ -198,7 +198,7 @@
 
                     <div class="col-md-4">
                         <label class="form-label">طريقة التحصيل</label>
-                        <select name="collection_payment_method" class="form-select">
+                        <select id="collection_payment_method" name="collection_payment_method" class="form-select">
                             <option selected disabled>اختر الطريقة</option>
                             <option value="instapay">انستا باي</option>
                             <option value="wallet">محفظة إلكترونية</option>
@@ -219,27 +219,6 @@
             </div>
         </div>
     </section>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // كودك هنا
-            document.getElementById("collection_method").addEventListener("change", function() {
-                const selected = this.value;
-                const extraFields = document.getElementById("collection_fields");
-
-                if (selected === "include" || selected === "add") {
-                    extraFields.style.display = "block";
-                } else {
-                    extraFields.style.display = "none";
-                    // مسح القيم عند الإخفاء
-                    extraFields.querySelectorAll("input, select").forEach(input => {
-                        input.value = "";
-                    });
-                }
-            });
-        });
-    </script>
-
-
     <script>
         let currentStep = 1;
 
@@ -291,9 +270,35 @@
 
         window.addEventListener("DOMContentLoaded", () => {
             updateStepUI();
+
             $('.select-change').select2({
                 placeholder: "اختر التحصيل",
                 dir: "rtl"
+            });
+
+            $('#collection_method').select2({
+                placeholder: "اختر التحصيل",
+                dir: "rtl"
+            });
+
+            $('#collection_payment_method').select2({
+                placeholder: "اختر الطريقة",
+                dir: "rtl"
+            });
+
+            // Attach event listener to Select2's change event
+            $('#collection_method').on('change', function() {
+                const selected = $(this).val();
+                const extraFields = document.getElementById("collection_fields");
+                if (selected === "include" || selected === "add") {
+                    extraFields.style.display = "flex";
+                } else {
+                    extraFields.style.display = "none";
+                    // Clear the values when hiding
+                    extraFields.querySelectorAll("input, select").forEach(input => {
+                        input.value = "";
+                    });
+                }
             });
         });
     </script>
