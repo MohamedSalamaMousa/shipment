@@ -18,208 +18,219 @@
                 </div>
 
             </div>
-            <form action="{{ route('shipping.store') }}" method="POST">
+            <form action="{{ route('send_shipment.create') }}" method="POST">
                 @csrf
                 <!-- الخطوات هنا -->
 
-            <!-- Step 1 -->
-            <div class="step-content" data-step="1">
+                <!-- Step 1 -->
+                <div class="step-content" data-step="1">
 
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">الاسم *</label>
-                        <input type="text" name="sender_name" class="form-control" required />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">رقم الهاتف *</label>
-                        <input type="text" name="sender_phone" class="form-control" placeholder="0100 123 4567"
-                            required />
-                    </div>
-                </div>
-
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">رقم هاتف إضافي (اختياري)</label>
-                        <input type="text" name="additional_phone_sender" class="form-control"
-                            placeholder="0123 456 7890" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">المحافظة *</label>
-                        <input type="text" name="sender_governorate" class="form-control" required />
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">الاسم *</label>
+                            <input type="text" name="sender_name" class="form-control" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">رقم الهاتف *</label>
+                            <input type="text" name="sender_phone" class="form-control" placeholder="0100 123 4567"
+                                required />
+                        </div>
                     </div>
 
-
-                </div>
-
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">العنوان بالتفصيل *</label>
-                        <input type="text" name="sender_address" class="form-control"
-                            placeholder="أقرب معلم أو عنوان مختصر" required />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label"> رقم المبنى *</label>
-                        <input type="text" name="sender_House_number" class="form-control" required />
-                    </div>
-
-                </div>
-
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">رقم الدور *</label>
-                        <input type="text" name="sender_floor_number" class="form-control" required />
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label">رقم الشقة *</label>
-                        <input type="text" name="sender_apartment_number" class="form-control" required />
-                    </div>
-                </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">رقم هاتف إضافي (اختياري)</label>
+                            <input type="text" name="additional_phone_sender" class="form-control"
+                                placeholder="0123 456 7890" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">المحافظة *</label>
+                            <select class="form-select select-governorate" name="from_governorate" required>
+                                <option selected disabled>اختر المحافظة</option>
+                                @php
+                                    $governorates = config('governorates');
+                                @endphp
+                                @foreach ($governorates as $gov)
+                                    <option value="{{ $gov }}">{{ $gov }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
 
-
-                <div class="row mt-4">
-                    <div class="col-12 d-flex justify-content-between">
-                        <button type="button" class="btn btn-outline-secondary" disabled>
-                            العودة
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="nextStep()">
-                            التالي
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!-- Step 2: معلومات المستلم -->
-            <div class="step-content" data-step="2">
-
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">الاسم *</label>
-                        <input type="text" name="recipient_name" class="form-control" required />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">رقم الهاتف *</label>
-                        <input type="text" name="recipient_phone" class="form-control" placeholder="0100 123 4567"
-                            required />
-                    </div>
-                </div>
-
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">رقم هاتف إضافي (اختياري)</label>
-                        <input type="text" name="additional_phone_recipient" class="form-control"
-                            placeholder="0123 456 7890" />
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">المحافظة *</label>
-                        <input type="text" name="recipient_governorate" class="form-control" required />
                     </div>
 
-                </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">العنوان بالتفصيل *</label>
+                            <input type="text" name="sender_address" class="form-control"
+                                placeholder="أقرب معلم أو عنوان مختصر" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"> رقم المبنى *</label>
+                            <input type="text" name="sender_House_number" class="form-control" required />
+                        </div>
 
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">العنوان بالتفصيل*</label>
-                        <input type="text" name="recipient_address" class="form-control"
-                            placeholder="أقرب معلم أو عنوان مختصر" required />
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label"> رقم المبنى *</label>
-                        <input type="text" name="recipient_House_number" class="form-control" required />
-                    </div>
-                </div>
 
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">رقم الدور *</label>
-                        <input type="text" name="recipient_floor_number" class="form-control" required />
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">رقم الدور *</label>
+                            <input type="text" name="sender_floor_number" class="form-control" required />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">رقم الشقة *</label>
+                            <input type="text" name="sender_apartment_number" class="form-control" required />
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">رقم الشقة *</label>
-                        <input type="text" name="recipient_apartment_number" class="form-control" required />
+
+
+
+                    <div class="row mt-4">
+                        <div class="col-12 d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-secondary" disabled>
+                                العودة
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="nextStep()">
+                                التالي
+                            </button>
+                        </div>
                     </div>
                 </div>
 
 
 
-                <div class="row mt-4">
-                    <div class="col-12 d-flex justify-content-between">
-                        <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
-                            العودة
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="nextStep()">
-                            التالي
-                        </button>
+                <!-- Step 2: معلومات المستلم -->
+                <div class="step-content" data-step="2">
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">الاسم *</label>
+                            <input type="text" name="recipient_name" class="form-control" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">رقم الهاتف *</label>
+                            <input type="text" name="recipient_phone" class="form-control" placeholder="0100 123 4567"
+                                required />
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">رقم هاتف إضافي (اختياري)</label>
+                            <input type="text" name="additional_phone_recipient" class="form-control"
+                                placeholder="0123 456 7890" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">المحافظة *</label>
+                            <input type="text" name="recipient_governorate" class="form-control" required />
+                        </div>
+
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">العنوان بالتفصيل*</label>
+                            <input type="text" name="recipient_address" class="form-control"
+                                placeholder="أقرب معلم أو عنوان مختصر" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label"> رقم المبنى *</label>
+                            <input type="text" name="recipient_House_number" class="form-control" required />
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">رقم الدور *</label>
+                            <input type="text" name="recipient_floor_number" class="form-control" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">رقم الشقة *</label>
+                            <input type="text" name="recipient_apartment_number" class="form-control" required />
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mt-4">
+                        <div class="col-12 d-flex justify-content-between">
+                            <button type="button" class="btn btn-outline-secondary" onclick="prevStep()">
+                                العودة
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="nextStep()">
+                                التالي
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- Step 3: تفاصيل الشحنة -->
-            <div class="row g-3 align-items-center step-content" data-step="3">
-                <h5 class="fw-bold text-center mb-4">تفاصيل الشحنة</h5>
+                <!-- Step 3: تفاصيل الشحنة -->
+                <div class="row g-3 align-items-center step-content" data-step="3">
+                    <h5 class="fw-bold text-center mb-4">تفاصيل الشحنة</h5>
 
-                <div class="col-md-4">
-                    <label class="form-label">محتويات الشحنة *</label>
-                    <input type="text" class="form-control" placeholder="مثال: كتب، ملابس..." required />
-                </div>
-
-                <div class="col-md-4">
-                    <label class="form-label">الوزن الإجمالي *</label>
-                    <div class="input-group">
-                        <input type="number" class="form-control" placeholder="0" required />
-                        <span class="input-group-text">كـج</span>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <label class="form-label">اختر التحصيل</label>
-                    <select class="form-select select-change" name="collection_method" id="collection_method" required>
-                        <option selected disabled>اختر التحصيل</option>
-                        <option value="include">شامل مصاريف الشحن</option>
-                        <option value="add">اضافة مصاريف الشحن</option>
-                        <option value="only">مصاريف الشحن فقط</option>
-                        <option value="none">بدون تحصيل و بدون مصاريف شحن</option>
-                    </select>
-                </div>
-
-                <div id="collection_fields" class="row mt-3" style="display: none;">
                     <div class="col-md-4">
-                        <label class="form-label">قيمة التحصيل *</label>
-                        <input type="number" name="collection_value" class="form-control" placeholder="مثال: 100"
-                            min="0" />
+                        <label class="form-label">محتويات الشحنة *</label>
+                        <input type="text" class="form-control" placeholder="مثال: كتب، ملابس..." required />
                     </div>
 
                     <div class="col-md-4">
-                        <label class="form-label">شكل رسوم التحصيل</label>
-                        <input type="text" name="collection_fee_type" class="form-control"
-                            placeholder="مثال: رسوم ثابتة، نسبة..." />
+                        <label class="form-label">الوزن الإجمالي *</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="0" required />
+                            <span class="input-group-text">كـج</span>
+                        </div>
                     </div>
 
                     <div class="col-md-4">
-                        <label class="form-label">طريقة التحصيل</label>
-                        <select id="collection_payment_method" name="collection_payment_method" class="form-select">
-                            <option selected disabled>اختر الطريقة</option>
-                            <option value="instapay">انستا باي</option>
-                            <option value="wallet">محفظة إلكترونية</option>
-                            <option value="bank">بنك</option>
+                        <label class="form-label">اختر التحصيل</label>
+                        <select class="form-select select-change" name="collection_method" id="collection_method"
+                            required>
+                            <option selected disabled>اختر التحصيل</option>
+                            <option value="include">شامل مصاريف الشحن</option>
+                            <option value="add">اضافة مصاريف الشحن</option>
+                            <option value="only">مصاريف الشحن فقط</option>
+                            <option value="none">بدون تحصيل و بدون مصاريف شحن</option>
                         </select>
                     </div>
+
+                    <div id="collection_fields" class="row mt-3" style="display: none;">
+                        <div class="col-md-4">
+                            <label class="form-label">قيمة التحصيل *</label>
+                            <input type="number" name="collection_value" class="form-control" placeholder="مثال: 100"
+                                min="0" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">شكل رسوم التحصيل</label>
+                            <input type="text" name="collection_fee_type" class="form-control"
+                                placeholder="مثال: رسوم ثابتة، نسبة..." />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">طريقة التحصيل</label>
+                            <select id="collection_payment_method" name="collection_payment_method" class="form-select">
+                                <option selected disabled>اختر الطريقة</option>
+                                <option value="instapay">انستا باي</option>
+                                <option value="wallet">محفظة إلكترونية</option>
+                                <option value="bank">بنك</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="col-12 d-flex justify-content-between mt-3">
+                        <button type="button" class="btn btn-outline-danger" onclick="prevStep()">
+                            العودة
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="nextStep()">
+                            التالي
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Navigation Buttons -->
-                <div class="col-12 d-flex justify-content-between mt-3">
-                    <button type="button" class="btn btn-outline-danger" onclick="prevStep()">
-                        العودة
-                    </button>
-                    <button type="button" class="btn btn-danger" onclick="nextStep()">
-                        التالي
-                    </button>
-                </div>
-            </div>
+            </form>
 
         </div>لهف
     </section>
