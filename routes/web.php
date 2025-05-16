@@ -37,7 +37,10 @@ Route::prefix('calculate_shipment')->controller(CalShipmentController::class)->g
 
 });
 
-Route::get('/track', [TrackingController::class, 'showForm'])->name('track.form');
-Route::post('/track', [TrackingController::class, 'track'])->name('track');
+Route::prefix('send/shipment')->controller(SendShipmentController::class)->group(
+    function () {
+        Route::get('/',  'index')->name('send_shipment.index');
+        Route::post('/create',  'create')->name('send_shipment.create');
+    }
 
-Route::get('send/shipment/', [SendShipmentController::class, 'index'])->name('send_shipment.index')->middleware('check.token');
+)->middleware('check.token');

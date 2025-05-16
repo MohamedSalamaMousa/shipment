@@ -18,6 +18,9 @@
                 </div>
 
             </div>
+            <form action="{{ route('shipping.store') }}" method="POST">
+                @csrf
+                <!-- الخطوات هنا -->
 
             <!-- Step 1 -->
             <div class="step-content" data-step="1">
@@ -217,7 +220,8 @@
                     </button>
                 </div>
             </div>
-        </div>
+
+        </div>لهف
     </section>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
