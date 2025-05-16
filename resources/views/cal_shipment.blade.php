@@ -159,7 +159,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" name="shipping_weight" class="form-control" value="0" />
+                            <input type="number" name="shipping_weight" class="form-control" min="0" />
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-danger rounded-5 mt-3">
@@ -201,8 +201,7 @@
                         <!-- الوزن -->
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" class="form-control" name="weight" min="0" value="0"
-                                required />
+                            <input type="number" class="form-control" name="weight" min="0" required />
                         </div>
 
                         <!-- زر الإرسال -->
