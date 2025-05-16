@@ -78,7 +78,7 @@ class SendShipmentController extends Controller
             ->asMultipart()
             ->post('https://admin.tetexexpress.com/api/shipment', $finalData);
 
-        return redirect()->back()->with('success_send_shipment', 'تم ارسال الشحنة بنجاح');
+        return redirect()->route('home')->with('success_send_shipment', 'تم ارسال الشحنة بنجاح');
     }
 
 
@@ -115,4 +115,6 @@ class SendShipmentController extends Controller
 
         return $response->body(); // or ->json() if you want decoded response
     }
+
+    
 }
