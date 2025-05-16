@@ -53,8 +53,37 @@
 </style>
 
 @section('content')
+    <!-- Toast Container -->
+    @if (session('success_send_shipment'))
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+            <div id="shipmentToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ✅ تم إرسال الشحنة بنجاح
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if (session('success_send_shipment'))
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const toastEl = document.getElementById("shipmentToast");
+                if (toastEl) {
+                    const toast = new bootstrap.Toast(toastEl, {
+                        delay: 1500
+                    });
+                    toast.show();
+                }
+            });
+        </script>
+    @endif
+
     <section id="main-content" class="p-md-5 m-md-5">
         <div class="container">
+
             <!-- Hero Content -->
             <div class="hero-content">
                 <h2>تتبع شحناتك</h2>
@@ -154,4 +183,5 @@
             }
         });
     </script>
+
 @endsection
