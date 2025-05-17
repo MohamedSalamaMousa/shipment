@@ -217,7 +217,7 @@
 
                         <div class="col-md-4">
                             <label class="form-label"> رسوم التحصيل</label>
-                            <select name="is_collection_included" class="form-select">
+                            <select id="is_collection_included" name="is_collection_included" class="form-select">
                                 <option selected disabled>رسوم التحصيل</option>
                                 <option value="true">اضافة رسوم التحصيل علي الشحن </option>
                                 <option value="false">عدم اضافة رسوم التحصيل علي الشحن </option>
@@ -390,6 +390,11 @@
                 placeholder: "اختر التحصيل",
                 dir: "rtl"
             });
+
+            $('#is_collection_included').select2({
+                placeholder: "اختر التحصيل",
+                dir: "rtl"
+            })
 
             $('#collection_method').select2({
                 placeholder: "اختر التحصيل",
