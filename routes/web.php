@@ -40,18 +40,18 @@ Route::prefix('calculate_shipment')->controller(CalShipmentController::class)->g
 
 Route::prefix('send/shipment')->controller(SendShipmentController::class)->group(
     function () {
-        Route::get('/',  'index')->name('send_shipment.index');
-        Route::post('/create',  'create')->name('send_shipment.create');
+        Route::get('/',  'index')->name('send_shipment.index')->middleware('check.token');
+        Route::post('/create',  'create')->name('send_shipment.create')->middleware('check.token');
     }
 
-)->middleware('check.token');
+);
 
 Route::prefix('shipments')->controller(ShipmentsController::class)->group(
     function () {
-        Route::get('/current',  'getShipments')->name('shipments.current');
+        Route::get('/current',  'getShipments')->name('shipments.current')->middleware('check.token');
 
-        Route::get('/details/{id}',  'getShipmentDetails')->name('shipments.details');
-        Route::post('/cancel/{id}', 'cancelShipment')->name('shipment.cancel');
-        Route::post('/finish/{id}',  'finishShipment')->name('shipment.finish');
+        Route::get('/details/{id}',  'getShipmentDetails')->name('shipments.details')->middleware('check.token');
+        Route::post('/cancel/{id}', 'cancelShipment')->name('shipment.cancel')->middleware('check.token');
+        Route::post('/finish/{id}',  'finishShipment')->name('shipment.finish')->middleware('check.token');
     }
-)->middleware('check.token');
+);

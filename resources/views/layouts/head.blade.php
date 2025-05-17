@@ -15,6 +15,6 @@
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <link rel="stylesheet" href="{{ asset('assets/styles.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/styles.css') }}?v={{ time() }}" />
     @yield('styles')
 </head>

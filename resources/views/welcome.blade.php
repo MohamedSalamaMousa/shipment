@@ -53,8 +53,37 @@
 </style>
 
 @section('content')
+    <!-- Toast Container -->
+    @if (session('success_send_shipment'))
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+            <div id="shipmentToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ✅ تم إرسال الشحنة بنجاح
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if (session('success_send_shipment'))
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const toastEl = document.getElementById("shipmentToast");
+                if (toastEl) {
+                    const toast = new bootstrap.Toast(toastEl, {
+                        delay: 1500
+                    });
+                    toast.show();
+                }
+            });
+        </script>
+    @endif
+
     <section id="main-content" class="p-md-5 m-md-5">
         <div class="container">
+
             <!-- Hero Content -->
             <div class="hero-content">
                 <h2>تتبع شحناتك</h2>
@@ -115,19 +144,6 @@
                         <div class="col-md-4 d-flex justify-content-center">
                             <div class="second-card text-center bg-light rounded-4 p-4"
                                 style="width: 100%; max-width: 280px">
-                                <a class="btn btn-card" title="ارسال شحنة">
-                                    <div class="img-wrap">
-                                        <i class="fa-solid fa-truck-fast fs-1 text-danger"></i>
-                                    </div>
-                                    <h3>ارسال شحنة</h3>
-                                    <p>ابدأ الشحن بسهولة. لا حاجة للتسجيل!</p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 d-flex justify-content-center">
-                            <div class="third-card text-center bg-light rounded-4 p-4"
-                                style="width: 100%; max-width: 280px">
                                 <a class="btn btn-card" title="ارسال شحنة" href="{{ route('send_shipment.index') }}">
                                     <div class="img-wrap">
                                         <i class="fa-solid fa-truck-fast fs-1 text-danger"></i>
@@ -138,6 +154,8 @@
                                 </a>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -154,4 +172,5 @@
             }
         });
     </script>
+
 @endsection

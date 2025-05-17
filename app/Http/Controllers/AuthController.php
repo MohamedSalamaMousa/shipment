@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterUserRequest;
-use App\Services\ExternalAuthService;
+use App\services\ExternalAuthService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Http;
 
@@ -22,15 +22,24 @@ class AuthController extends Controller
 
 
         $response = $this->authService->register($request->validated());
+
         if ($response->successful()) {
             $token = $response['data']['token'] ?? null;
-            // خزّن التوكن في السيشن
             session(['user_token' => $token]);
-            session(['user_data' => $response['data']]); // اختياري لتخزين بيانات المستخدم
-            return redirect()->route('home')->with('success', 'Registration successful! Please check your email for verification.');
-        }
 
-        return redirect()->back()->withErrors(['msg' => 'Registration failed: ' . $response->body()]);
+            if ($token) {
+                session(['user_data' => $response['data']]);
+                return redirect()->route('home')->with('success', 'تم التسجيل بنجاح');
+            }
+
+            return redirect()->back()->with('error', 'فشل التسجيل: التوكن غير موجود.');
+        } else {
+            // التعامل مع الأخطاء القادمة من الـ API
+            $errors = $response->json('errors'); // يرجع مصفوفة الأخطاء
+            $message = $response->json('message'); // رسالة عامة
+
+            return redirect()->back()->withErrors($errors)->with('error', $message);
+        }
     }
     public function performLogin(Request $request)
     {

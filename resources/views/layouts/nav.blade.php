@@ -1,7 +1,7 @@
 <header class="position-relative">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid px-3">
-            <a class="navbar-brand fw-bold text-danger" href="#">تيتكس</a>
+            <a class="navbar-brand fw-bold text-danger" href="{{ route('home') }}">تيتكس</a>
 
             <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -13,10 +13,11 @@
             <div class="collapse navbar-collapse text-center" id="mainNavbar">
                 <!-- Right-side nav (pushed left in RTL) -->
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('send_shipment.index') }}">رسال شحنة جديدة</a>
-                    </li>
+                    @if (Session::has('user_token'))
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('send_shipment.index') }}">رسال شحنة جديدة</a>
+                        </li>
+                    @endif
                     @if (Session::has('user_token'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('shipments.current') }}">شحناتي</a>
@@ -101,10 +102,11 @@
                     <div class="mb-2">
                         <span class="fw-bold text-muted">
                             <i class="fa-solid fa-user-plus text-danger"></i>
-                            جديد مع أرامكس؟
+                            جديد مع تيتكس؟
                         </span>
                     </div>
-                    <a href="register.html" class="btn btn-outline-danger rounded-pill px-4">إنشاء حساب</a>
+                    <a href="{{ route('register.view') }}" class="btn btn-outline-danger rounded-pill px-4">إنشاء
+                        حساب</a>
                 </div>
             </div>
         </div>

@@ -15,7 +15,6 @@ class SendShipmentController extends Controller
 
     public function create(Request $request)
     {
-
         $validated = $request->validate([
             'sender_governorate' => 'required|string',
             'recipient_governorate' => 'required|string',
@@ -47,6 +46,7 @@ class SendShipmentController extends Controller
         );
 
         $validated['collection_value'] = $validated['collection_value'] ?? 0;
+        $validated['collection_method'] = $validated['collection_method'] ?? 0;
         $collectionMap = [
             'add' => 'اضافة مصاريف الشحن',
             'include' => 'شامل مصاريف الشحن',
@@ -74,9 +74,15 @@ class SendShipmentController extends Controller
             'user_collection_value' => $responseArray['data']['total'],
         ]);
 
+
         $response = Http::withToken(session('user_token'))
             ->asMultipart()
             ->post('https://admin.tetexexpress.com/api/shipment', $finalData);
+
+        if ($response->json() == null) {
+
+            return redirect()->back()->with('error', 'فشل في إرسال الشحنة.');
+        }
 
         return redirect()->route('home')->with('success_send_shipment', 'تم ارسال الشحنة بنجاح');
     }
@@ -115,6 +121,4 @@ class SendShipmentController extends Controller
 
         return $response->body(); // or ->json() if you want decoded response
     }
-
-    
 }

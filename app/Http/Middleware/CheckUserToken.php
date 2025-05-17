@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,8 +16,8 @@ class CheckUserToken
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!session()->has('user_token')) {
-            return redirect()->route('home')->withErrors(['msg' => 'You must be logged in first.']);
+        if (!session()->has('user_token') || session('user_token') === null) {
+            return redirect()->route('home')->withErrors(['msg' => 'يجب تسجيل الدخول أولاً.']);
         }
         return $next($request);
     }
