@@ -63,3 +63,5 @@ Route::prefix('complaint')->controller(ComplaintController::class)->group(
         Route::post('/send',  'sendComplaint')->name('complaint.store')->middleware('check.token');
     }
 );
+Route::get('/tracking', [TrackingController::class, 'index'])->name('tracking.index');
+Route::post('/tracking/show', [TrackingController::class, 'tracking'])->name('tracking.show');

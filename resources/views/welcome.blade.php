@@ -115,16 +115,18 @@
                         تسجيل الخروج
                     </button>
                 </form> --}}
+
+
                 <div class="form-track-group input-group col-md-12" id="divTrackingNumbers"></div>
 
-                <div class="input-wrap">
+                <div class="input-wrap position-relative mt-4">
                     <input type="text" class="form-control" placeholder="ادخل رقم التتبع الخاص بك" id="TrackingNumber"
                         name="TrackingNumber" />
-
-                    <span style="right: 10px" class="position-absolute top-50 text-danger translate-middle-y"><i
-                            class="fas fs-3 fa-box"></i></span>
-
-                    <a href="#" class="btn btn-primary" title="تتبع" id="btn-mainslider-tracksubmit">تتبع</a>
+                    <span style="right: 10px" class="position-absolute top-50 text-danger translate-middle-y">
+                        <i class="fas fs-3 fa-box"></i>
+                    </span>
+                    <button type="button" class="btn btn-primary" title="تتبع"
+                        id="btn-mainslider-tracksubmit">تتبع</button>
                 </div>
                 <h6 class="block-info-text text-muted mt-2" style="font-size: 14px">
                     أدخل عدة أرقام تتبع مفصولة بمسافة أو فاصلة.<br />إذا لم يعمل رقم
@@ -217,13 +219,27 @@
         </div>
     </section>
     <script>
-        // Hide the success message after 2 seconds
         document.addEventListener('DOMContentLoaded', function() {
             const successMessage = document.getElementById('successMessage');
             if (successMessage) {
                 setTimeout(() => {
                     successMessage.style.display = 'none';
-                }, 2000); // 2000 milliseconds = 2 seconds
+                }, 2000);
+            }
+
+            const trackButton = document.getElementById('btn-mainslider-tracksubmit');
+            if (trackButton) {
+                trackButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const trackingNumber = document.getElementById('TrackingNumber').value.trim();
+                    if (trackingNumber) {
+                        const url = "{{ route('tracking.index') }}?barcode=" + encodeURIComponent(
+                            trackingNumber);
+                        window.location.href = url;
+                    } else {
+                        alert('يرجى إدخال رقم التتبع');
+                    }
+                });
             }
         });
     </script>
