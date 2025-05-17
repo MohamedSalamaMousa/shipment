@@ -344,6 +344,17 @@ input::placeholder {
 
 /* Register Section */
 
+@media (max-width: 576px) {
+    #login-form {
+        left: 10px !important;
+    }
+    /* the card after the #login-form */
+    #login-form .card {
+        min-width: 350px !important;
+        max-width: 400px !important;
+    }
+}
+
 @media (max-width: 991.98px) {
     .navbar-collapse {
         text-align: right;

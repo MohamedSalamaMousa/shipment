@@ -20,6 +20,7 @@
             </div>
             <form action="{{ route('send_shipment.create') }}" method="POST">
                 @csrf
+                <div id="formErrors" class="alert alert-danger d-none" role="alert"></div>
                 <!-- الخطوات هنا -->
 
                 <!-- Step 1 -->
@@ -216,7 +217,7 @@
 
                         <div class="col-md-4">
                             <label class="form-label"> رسوم التحصيل</label>
-                            <select name="is_collection_included" class="form-select">
+                            <select id="is_collection_included" name="is_collection_included" class="form-select">
                                 <option selected disabled>رسوم التحصيل</option>
                                 <option value="true">اضافة رسوم التحصيل علي الشحن </option>
                                 <option value="false">عدم اضافة رسوم التحصيل علي الشحن </option>
@@ -277,11 +278,94 @@
             });
         }
 
+        function validateCurrentStep(step) {
+            let valid = true;
+            let messages = [];
+
+            const isArabic = str => /^[\u0600-\u06FF\s]+$/.test(str);
+            const isDigits = str => /^\d+$/.test(str);
+            const isValidPhone = str => /^01[0-2,5]{1}[0-9]{8}$/.test(str);
+
+            // Clear previous errors
+            const errorBox = document.getElementById("formErrors");
+            errorBox.classList.add("d-none");
+            errorBox.innerHTML = "";
+
+            if (step === 1) {
+                const senderName = document.querySelector('[name="sender_name"]').value.trim();
+                const phone = document.querySelector('[name="sender_phone"]').value.trim();
+                const house = document.querySelector('[name="sender_House_number"]').value.trim();
+                const floor = document.querySelector('[name="sender_floor_number"]').value.trim();
+                const apt = document.querySelector('[name="sender_apartment_number"]').value.trim();
+
+                if (!isArabic(senderName)) {
+                    messages.push("❌ الاسم يجب أن يكون باللغة العربية فقط");
+                    valid = false;
+                }
+                if (!isValidPhone(phone)) {
+                    messages.push("❌ رقم الهاتف غير صحيح. يجب أن يحتوي على 11 رقم ويبدأ بـ 01");
+                    valid = false;
+                }
+                if (!isDigits(house)) {
+                    messages.push("❌ رقم المبنى يجب أن يكون أرقام فقط");
+                    valid = false;
+                }
+                if (!isDigits(floor)) {
+                    messages.push("❌ رقم الدور يجب أن يكون أرقام فقط");
+                    valid = false;
+                }
+                if (!isDigits(apt)) {
+                    messages.push("❌ رقم الشقة يجب أن يكون أرقام فقط");
+                    valid = false;
+                }
+            }
+
+            if (step === 2) {
+                const recipientName = document.querySelector('[name="recipient_name"]').value.trim();
+                const phone = document.querySelector('[name="recipient_phone"]').value.trim();
+                const house = document.querySelector('[name="recipient_House_number"]').value.trim();
+                const floor = document.querySelector('[name="recipient_floor_number"]').value.trim();
+                const apt = document.querySelector('[name="recipient_apartment_number"]').value.trim();
+
+                if (!isArabic(recipientName)) {
+                    messages.push("❌ اسم المستلم يجب أن يكون باللغة العربية فقط");
+                    valid = false;
+                }
+                if (!isValidPhone(phone)) {
+                    messages.push("❌ رقم هاتف المستلم غير صحيح");
+                    valid = false;
+                }
+                if (!isDigits(house)) {
+                    messages.push("❌ رقم المبنى يجب أن يكون أرقام فقط");
+                    valid = false;
+                }
+                if (!isDigits(floor)) {
+                    messages.push("❌ رقم الدور يجب أن يكون أرقام فقط");
+                    valid = false;
+                }
+                if (!isDigits(apt)) {
+                    messages.push("❌ رقم الشقة يجب أن يكون أرقام فقط");
+                    valid = false;
+                }
+            }
+
+            if (!valid) {
+                errorBox.innerHTML = messages.map(msg => `<div>${msg}</div>`).join("");
+                errorBox.classList.remove("d-none");
+            }
+
+            return valid;
+        }
+
+
+        // Update nextStep() to include validation
         function nextStep() {
             const totalSteps = document.querySelectorAll(".step").length;
             if (currentStep < totalSteps) {
-                currentStep++;
-                updateStepUI();
+                if (validateCurrentStep(currentStep)) {
+                    currentStep++;
+                    updateStepUI();
+                }
             }
         }
 
@@ -308,6 +392,11 @@
                 placeholder: "اختر التحصيل",
                 dir: "rtl"
             });
+
+            $('#is_collection_included').select2({
+                placeholder: "اختر التحصيل",
+                dir: "rtl"
+            })
 
             $('#collection_method').select2({
                 placeholder: "اختر التحصيل",

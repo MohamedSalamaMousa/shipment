@@ -120,17 +120,17 @@
             <!-- Nav Tabs -->
             <ul class="nav nav-pills justify-content-center mb-4" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active text-danger" id="pills-international-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-international" type="button" role="tab"
-                        aria-controls="pills-international" aria-selected="true">
-                        <i class="fa-solid fa-plane-departure"></i> دولي
+                    <button class="nav-link active text-danger" id="pills-domestic-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-domestic" type="button" role="tab" aria-controls="pills-domestic"
+                        aria-selected="false">
+                        <i class="fa-solid fa-truck"></i> <span class="fw-bold fs-5">محلي</span>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link text-danger" id="pills-domestic-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-domestic" type="button" role="tab" aria-controls="pills-domestic"
-                        aria-selected="false">
-                        <i class="fa-solid fa-truck"></i> محلي
+                    <button class="nav-link text-danger" id="pills-international-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-international" type="button" role="tab"
+                        aria-controls="pills-international" aria-selected="true">
+                        <i class="fa-solid fa-plane-departure"></i> <span class="fw-bold fs-5">دولي</span>
                     </button>
                 </li>
             </ul>
@@ -159,7 +159,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" name="shipping_weight" class="form-control" min="0" />
+                            <input type="number" name="shipping_weight" placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" class="form-control" min="0" />
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-danger rounded-5 mt-3">
@@ -201,7 +201,7 @@
                         <!-- الوزن -->
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" class="form-control" name="weight" min="0" required />
+                            <input type="number" class="form-control" placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" name="weight" min="0" required />
                         </div>
 
                         <!-- زر الإرسال -->

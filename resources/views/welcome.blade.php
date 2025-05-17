@@ -50,6 +50,15 @@
         text-align: center;
         padding: 20px 0;
     }
+
+    #serviceCarousel .carousel-item i {
+        color: #fff;
+        transition: transform 0.3s ease;
+    }
+
+    #serviceCarousel .carousel-item:hover i {
+        transform: scale(1.2);
+    }
 </style>
 
 @section('content')
@@ -157,6 +166,46 @@
 
 
                     </div>
+                </div>
+            </div>
+            <!-- Carousel Section -->
+            <div class="my-5">
+                <div id="serviceCarousel" class="carousel slide rounded-4 overflow-hidden shadow" data-bs-interval="3000" data-bs-ride="carousel">
+                    <div class="carousel-inner text-center text-white" style="background-color: #dc3545;">
+
+                        <!-- Slide 1: Tracking -->
+                        <div class="carousel-item active p-5">
+                            <i class="fa-solid fa-box-open fa-3x mb-3"></i>
+                            <h4 class="mb-2">سهولة تتبع الشحنات</h4>
+                            <p>تتبع شحنتك في أي وقت باستخدام رقم التتبع بكل سهولة.</p>
+                        </div>
+
+                        <!-- Slide 2: Send without account -->
+                        <div class="carousel-item p-5">
+                            <i class="fa-solid fa-paper-plane fa-3x mb-3"></i>
+                            <h4 class="mb-2">أرسل شحنتك بدون حساب</h4>
+                            <p>لا حاجة للتسجيل. أرسل شحنتك بسرعة ومرونة.</p>
+                        </div>
+
+                        <!-- Slide 3: 24/7 Support -->
+                        <div class="carousel-item p-5">
+                            <i class="fa-solid fa-headset fa-3x mb-3"></i>
+                            <h4 class="mb-2">دعم فني على مدار الساعة</h4>
+                            <p>نحن بجانبك دائمًا لحل أي استفسار أو مشكلة.</p>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#serviceCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                        <span class="visually-hidden">السابق</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#serviceCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                        <span class="visually-hidden">التالي</span>
+                    </button>
                 </div>
             </div>
         </div>
