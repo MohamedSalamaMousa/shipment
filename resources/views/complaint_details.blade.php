@@ -6,7 +6,7 @@
             <h3 class="text-center text-danger mb-4">الشكاوى</h3>
 
             <!-- Complaint Card -->
-            @foreach ($complaints as $complaint)
+            @forelse  ($complaints as $complaint)
                 <div class="card mb-3 shadow-sm">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -43,7 +43,13 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="d-flex flex-column justify-content-center align-items-center text-center my-5">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5953/5953767.png" alt="No Complaints"
+                        style="width: 120px" class="mb-4" />
+                    <h4 class="text-muted">لا يوجد شكاوى</h4>
+                </div>
+            @endforelse
 
 
 
