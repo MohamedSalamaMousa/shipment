@@ -121,7 +121,4 @@ class SendShipmentController extends Controller
 
         return $response->body(); // or ->json() if you want decoded response
     }
-
-
-
 }
