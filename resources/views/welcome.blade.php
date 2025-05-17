@@ -75,6 +75,11 @@
             </div>
         </div>
     @endif
+    @if ($errors->has('msg'))
+        <div class="alert alert-danger text-center">
+            {{ $errors->first('msg') }}
+        </div>
+    @endif
 
     @if (session('success_send_shipment'))
         <script>
@@ -170,7 +175,8 @@
             </div>
             <!-- Carousel Section -->
             <div class="my-5">
-                <div id="serviceCarousel" class="carousel slide rounded-4 overflow-hidden shadow" data-bs-interval="3000" data-bs-ride="carousel">
+                <div id="serviceCarousel" class="carousel slide rounded-4 overflow-hidden shadow" data-bs-interval="3000"
+                    data-bs-ride="carousel">
                     <div class="carousel-inner text-center text-white" style="background-color: #dc3545;">
 
                         <!-- Slide 1: Tracking -->
