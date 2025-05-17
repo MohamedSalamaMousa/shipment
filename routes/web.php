@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalShipmentController;
 use App\Http\Controllers\SendShipmentController;
+use App\Http\Controllers\ShipmentsController;
 use App\Http\Controllers\TrackingController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,4 +44,14 @@ Route::prefix('send/shipment')->controller(SendShipmentController::class)->group
         Route::post('/create',  'create')->name('send_shipment.create');
     }
 
+)->middleware('check.token');
+
+Route::prefix('shipments')->controller(ShipmentsController::class)->group(
+    function () {
+        Route::get('/current',  'getShipments')->name('shipments.current');
+
+        Route::get('/details/{id}',  'getShipmentDetails')->name('shipments.details');
+        Route::post('/cancel/{id}', 'cancelShipment')->name('shipment.cancel');
+        Route::post('/finish/{id}',  'finishShipment')->name('shipment.finish');
+    }
 )->middleware('check.token');

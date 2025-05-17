@@ -13,12 +13,16 @@
             <div class="collapse navbar-collapse text-center" id="mainNavbar">
                 <!-- Right-side nav (pushed left in RTL) -->
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">إرسال وتتبع الشحنات</a>
+                        <a class="nav-link active" href="{{ route('send_shipment.index') }}">رسال شحنة جديدة</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">الحلول والمنتجات</a>
-                    </li>
+                    @if (Session::has('user_token'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('shipments.current') }}">شحناتي</a>
+                        </li>
+                    @endif
+
                     <li class="nav-item">
                         <a class="nav-link" href="#">الشكاوي والأسئلة</a>
                     </li>
@@ -33,19 +37,23 @@
                     <div class="d-lg-flex justify-content-lg-end align-items-center text-center mt-3 mt-lg-0">
                         <!-- Dropdown for logged-in user -->
                         <div class="dropdown me-2">
-                            <button class="btn btn-danger rounded-pill px-4 dropdown-toggle d-flex align-items-center" type="button"
-                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-danger rounded-pill px-4 dropdown-toggle d-flex align-items-center"
+                                type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-user me-2"></i> <!-- Adding an icon for better visuals -->
                                 <span>{{ session('user_data')['name'] }} مرحبا</span>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="dropdownMenuLink" style="min-width: 200px;">
+                            <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="dropdownMenuLink"
+                                style="min-width: 200px;">
                                 <li><a class="dropdown-item text-end" href="#">الصفحة الشخصية</a></li>
                                 <li><a class="dropdown-item text-end" href="#">الإعدادات</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                         @csrf
-                                        <button type="submit" class="dropdown-item text-end text-danger">تسجيل الخروج</button>
+                                        <button type="submit" class="dropdown-item text-end text-danger">تسجيل
+                                            الخروج</button>
                                     </form>
                                 </li>
                             </ul>
@@ -108,21 +116,27 @@
     .dropdown-toggle {
         transition: background-color 0.3s ease;
     }
+
     .dropdown-toggle:hover {
-        background-color: #c82333; /* Slightly darker shade of red on hover */
+        background-color: #c82333;
+        /* Slightly darker shade of red on hover */
     }
+
     .dropdown-menu {
         border: none;
         border-radius: 10px;
         padding: 10px 0;
     }
+
     .dropdown-item {
         padding: 8px 20px;
         transition: background-color 0.2s ease;
     }
+
     .dropdown-item:hover {
         background-color: #f8f9fa;
     }
+
     .dropdown-divider {
         margin: 5px 0;
     }
