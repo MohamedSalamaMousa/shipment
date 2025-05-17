@@ -23,10 +23,11 @@
                             <a class="nav-link" href="{{ route('shipments.current') }}">شحناتي</a>
                         </li>
                     @endif
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">الشكاوي والأسئلة</a>
-                    </li>
+                    @if (Session::has('user_token'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('complaint.index') }}">الشكاوي </a>
+                        </li>
+                    @endif
                 </ul>
 
                 <!-- Login/User Dropdown -->

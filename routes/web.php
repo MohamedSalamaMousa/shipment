@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalShipmentController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\SendShipmentController;
 use App\Http\Controllers\ShipmentsController;
 use App\Http\Controllers\TrackingController;
@@ -53,5 +54,12 @@ Route::prefix('shipments')->controller(ShipmentsController::class)->group(
         Route::get('/details/{id}',  'getShipmentDetails')->name('shipments.details')->middleware('check.token');
         Route::post('/cancel/{id}', 'cancelShipment')->name('shipment.cancel')->middleware('check.token');
         Route::post('/finish/{id}',  'finishShipment')->name('shipment.finish')->middleware('check.token');
+    }
+);
+Route::prefix('complaint')->controller(ComplaintController::class)->group(
+    function () {
+        Route::get('/',  'index')->name('complaint.index')->middleware('check.token');
+        Route::get('/create',  'create')->name('complaint.create')->middleware('check.token');
+        Route::post('/send',  'sendComplaint')->name('complaint.store')->middleware('check.token');
     }
 );
