@@ -38,8 +38,13 @@ class SendShipmentController extends Controller
             'recipient_address' => 'required|string',
             'additional_phone_sender' => 'nullable|string',
             'additional_phone_recipient' => 'nullable|string',
+            'collection_phone' => 'nullable',
+            'bank_name' => 'nullable',
+            'account_number' => 'nullable',
+            'beneficiary_name' => 'nullable',
         ]);
 
+        
         $validated['is_collection_included'] = filter_var(
             $request->input('is_collection_included', false),
             FILTER_VALIDATE_BOOLEAN
@@ -47,6 +52,12 @@ class SendShipmentController extends Controller
 
         $validated['collection_value'] = $validated['collection_value'] ?? 0;
         $validated['collection_method'] = $validated['collection_method'] ?? 0;
+        $validated['collection_phone'] = $validated['collection_phone'] ?? null;
+        $validated['bank_name'] = $validated['bank_name'] ?? null;
+        $validated['account_number'] = $validated['account_number'] ?? null;
+        $validated['beneficiary_name'] = $validated['beneficiary_name'] ?? null;
+        $validated['additional_phone_sender'] = $validated['additional_phone_sender'] ?? null;
+        $validated['additional_phone_recipient'] = $validated['additional_phone_recipient'] ?? null;
         $collectionMap = [
             'add' => 'اضافة مصاريف الشحن',
             'include' => 'شامل مصاريف الشحن',
