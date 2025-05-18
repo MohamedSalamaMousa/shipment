@@ -137,7 +137,6 @@
                                 @endforeach
                             </select>
                         </div>
-
                     </div>
 
                     <div class="row g-3">
@@ -191,9 +190,10 @@
                     <div class="col-md-4">
                         <label class="form-label">الوزن الإجمالي *</label>
                         <div class="input-group">
-                            <input type="number" class="form-control" placeholder="0" required
-                                name='shipment_weight' />
-                            <span class="input-group-text">كـج</span>
+                            <input type="number" class="form-control"
+                                placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" min="1" max="30000"
+                                required name='shipment_weight' />
+                            <span class="input-group-text">جم</span>
                         </div>
                     </div>
 
@@ -233,6 +233,31 @@
                                 <option value="إلكترونية محفظة">محفظة إلكترونية</option>
                                 <option value="بنك">بنك</option>
                             </select>
+                        </div>
+
+                        <div class="col-md-12 mt-3" id="instapay_fields" style="display: none;">
+                            <label class="form-label">رقم الهاتف</label>
+                            <input type="text" class="form-control" name="instapay_phone"
+                                placeholder="رقم الهاتف المرتبط بإنستا باي" />
+                        </div>
+
+                        <div class="col-md-12 mt-3" id="wallet_fields" style="display: none;">
+                            <label class="form-label">رقم الهاتف</label>
+                            <input type="text" class="form-control" name="wallet_phone"
+                                placeholder="رقم الهاتف للمحفظة الإلكترونية" />
+                        </div>
+
+                        <div class="col-md-12 mt-3" id="bank_fields" style="display: none;">
+                            <label class="form-label">اسم البنك</label>
+                            <input type="text" class="form-control mb-2" name="bank_name" placeholder="اسم البنك" />
+
+                            <label class="form-label">رقم الحساب</label>
+                            <input type="text" class="form-control mb-2" name="bank_account"
+                                placeholder="رقم الحساب" />
+
+                            <label class="form-label">اسم المستفيد باللغة الانجليزية</label>
+                            <input type="text" class="form-control" name="bank_recipient_name"
+                                placeholder="Full Name in English" />
                         </div>
                     </div>
 
@@ -417,6 +442,20 @@
                 placeholder: "اختر الطريقة",
                 dir: "rtl"
             });
+
+            $('#collection_payment_method').on('change', function() {
+                $('#instapay_fields, #wallet_fields, #bank_fields').hide().find('input').val('');
+
+                const value = $(this).val();
+                if (value === "انسا باي") {
+                    $('#instapay_fields').show();
+                } else if (value === "إلكترونية محفظة") {
+                    $('#wallet_fields').show();
+                } else if (value === "بنك") {
+                    $('#bank_fields').show();
+                }
+            });
+
 
             // Attach event listener to Select2's change event
             $('#collection_method').on('change', function() {

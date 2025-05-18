@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'الشكاوي')
 @section('content')
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light min-vh-100">
         <div class="container">
             <h3 class="text-center text-danger mb-4">الشكاوى</h3>
 

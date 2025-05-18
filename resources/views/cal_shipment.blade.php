@@ -159,7 +159,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" name="shipping_weight" placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" class="form-control" min="0" />
+                            <input type="number" name="shipping_weight" min="1" max="30000" placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" class="form-control" min="0" />
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-danger rounded-5 mt-3">
@@ -201,7 +201,7 @@
                         <!-- الوزن -->
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" class="form-control" placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" name="weight" min="0" required />
+                            <input type="number" class="form-control" min="1" max="30000" placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" name="weight" min="0" required />
                         </div>
 
                         <!-- زر الإرسال -->

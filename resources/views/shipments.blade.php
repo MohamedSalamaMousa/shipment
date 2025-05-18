@@ -103,7 +103,7 @@
 @endsection
 
 @section('content')
-    <section id="main-content" class="py-4">
+    <section id="main-content" class="py-4 min-vh-100">
         <div class="container">
             <div class="header mb-3">
                 <h2>شحناتي</h2>

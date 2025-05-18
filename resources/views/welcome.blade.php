@@ -75,11 +75,17 @@
             </div>
         </div>
     @endif
+
     @if ($errors->has('msg'))
-        <div class="alert alert-danger text-center">
-            {{ $errors->first('msg') }}
+        <div class="container mt-3 d-flex justify-content-center">
+            <div class="alert alert-danger alert-dismissible fade show w-100 text-center" role="alert"
+                style="max-width: 600px;">
+                <strong>{{ $errors->first('msg') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         </div>
     @endif
+
 
     @if (session('success_send_shipment'))
         <script>
@@ -95,7 +101,7 @@
         </script>
     @endif
 
-    <section id="main-content" class="p-md-5 m-md-5">
+    <section id="main-content" class="p-md-5 m-md-5 min-vh-100">
         <div class="container">
 
             <!-- Hero Content -->
