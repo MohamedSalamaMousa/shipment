@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container min-vh-100 py-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card p-4 shadow-sm">
