@@ -237,13 +237,13 @@
 
                         <div class="col-md-12 mt-3" id="instapay_fields" style="display: none;">
                             <label class="form-label">رقم الهاتف</label>
-                            <input type="text" class="form-control" name="instapay_phone"
+                            <input type="text" class="form-control" name="collection_phone"
                                 placeholder="رقم الهاتف المرتبط بإنستا باي" />
                         </div>
 
                         <div class="col-md-12 mt-3" id="wallet_fields" style="display: none;">
                             <label class="form-label">رقم الهاتف</label>
-                            <input type="text" class="form-control" name="wallet_phone"
+                            <input type="text" class="form-control" name="collection_phone"
                                 placeholder="رقم الهاتف للمحفظة الإلكترونية" />
                         </div>
 
@@ -252,11 +252,11 @@
                             <input type="text" class="form-control mb-2" name="bank_name" placeholder="اسم البنك" />
 
                             <label class="form-label">رقم الحساب</label>
-                            <input type="text" class="form-control mb-2" name="bank_account"
+                            <input type="text" class="form-control mb-2" name="account_number"
                                 placeholder="رقم الحساب" />
 
                             <label class="form-label">اسم المستفيد باللغة الانجليزية</label>
-                            <input type="text" class="form-control" name="bank_recipient_name"
+                            <input type="text" class="form-control" name="beneficiary_name"
                                 placeholder="Full Name in English" />
                         </div>
                     </div>

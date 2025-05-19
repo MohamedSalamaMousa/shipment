@@ -179,7 +179,8 @@
                 </button>
             </form>
 
-            <button class="btn btn-warning text-dark"><i class="fa-solid fa-exclamation-circle"></i> إرسال شكوى</button>
+            <a class="btn btn-warning text-dark" href="{{ route('complaint.create') }}"><i
+                    class="fa-solid fa-exclamation-circle"></i> إرسال شكوى</a>
             <form action="{{ route('shipment.cancel', $shipment['id']) }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-danger rounded-pill px-4">
