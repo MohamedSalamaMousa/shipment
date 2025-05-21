@@ -18,7 +18,7 @@
                 </div>
 
             </div>
-            <form action="{{ route('send_shipment.create') }}" method="POST">
+            <form id="shipmentForm" action="{{ route('send_shipment.create') }}" method="POST">
                 @csrf
                 <div id="formErrors" class="alert alert-danger d-none" role="alert"></div>
                 <!-- الخطوات هنا -->
@@ -262,13 +262,19 @@
                     </div>
 
                     <!-- Navigation Buttons -->
-                    <div class="col-12 d-flex justify-content-between mt-3">
-                        <button type="button" class="btn btn-outline-danger" onclick="prevStep()">
-                            العودة
-                        </button>
-                        <button type="sumbit" class="btn btn-danger">
-                            التالي
-                        </button>
+                    <div class="col-12 d-flex justify-content-between mt-3 align-items-center">
+                        <input type="hidden" name="submission_type" id="submission_type" value="finish">
+
+                        <button type="button" class="btn btn-outline-danger" onclick="prevStep()">العودة</button>
+
+                        <div class="d-flex flex-wrap gap-2 justify-content-end">
+                            <button type="button" class="btn btn-light border text-danger px-4"
+                                onclick="handleCancel()">❌ إلغاء</button>
+                            <button type="button" class="btn btn-outline-success px-4"
+                                onclick="return handleSaveAndAdd()">📦 حفظ وإضافة شحنة أخرى</button>
+                            <button type="submit" class="btn btn-danger px-4" onclick="return handleSaveAndFinish()">📦
+                                حفظ وإنهاء</button>
+                        </div>
                     </div>
                 </div>
 
@@ -408,6 +414,79 @@
                 .forEach((btn) => btn.classList.remove("active"));
             // Add active to the clicked one
             button.classList.add("active");
+        }
+
+        function handleSaveAndFinish() {
+            redirectAfterSubmit = "finish";
+            return true; // Allow form to submit
+        }
+
+        function handleSaveAndAdd() {
+            document.getElementById('submission_type').value = 'add_more';
+
+            const form = document.getElementById('shipmentForm');
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        // Show success toast
+                        const toast = document.createElement("div");
+                        toast.className =
+                            "toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 p-3";
+                        toast.style.zIndex = 9999;
+                        toast.innerHTML = `<div class="d-flex">
+                        <div class="toast-body">${data.message}</div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>`;
+                        document.body.appendChild(toast);
+                        const bsToast = new bootstrap.Toast(toast, {
+                            delay: 2000
+                        });
+                        bsToast.show();
+
+                        // Clear step 3 fields only
+                        document.querySelector('[name="shipment_details"]').value = "";
+                        document.querySelector('[name="shipment_weight"]').value = "";
+                        document.querySelector('[name="collection"]').selectedIndex = 0;
+                        document.querySelector('[name="collection_value"]').value = "";
+                        document.querySelector('[name="is_collection_included"]').selectedIndex = 0;
+                        document.querySelector('[name="collection_method"]').selectedIndex = 0;
+                        document.querySelector('[name="collection_phone"]').value = "";
+                        document.querySelector('[name="bank_name"]').value = "";
+                        document.querySelector('[name="account_number"]').value = "";
+                        document.querySelector('[name="beneficiary_name"]').value = "";
+
+                        // Hide conditional sections
+                        document.getElementById('collection_fields').style.display = "none";
+                        document.getElementById('instapay_fields').style.display = "none";
+                        document.getElementById('wallet_fields').style.display = "none";
+                        document.getElementById('bank_fields').style.display = "none";
+
+                        // Return to Step 1
+                        currentStep = 1;
+                        updateStepUI();
+                    } else {
+                        alert('فشل في حفظ الشحنة');
+                    }
+                })
+                .catch(() => {
+                    alert('حدث خطأ أثناء الحفظ');
+                });
+
+            return false; // prevent normal form submission
+        }
+
+
+        function handleCancel() {
+            window.location.href = "/"; // Change to your homepage route
         }
 
         window.addEventListener("DOMContentLoaded", () => {
