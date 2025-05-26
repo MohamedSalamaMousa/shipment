@@ -13,6 +13,7 @@ class TrackingController extends Controller
 
     public function index()
     {
+
         return view('track');
     }
     public function tracking(Request $request)
@@ -29,17 +30,30 @@ class TrackingController extends Controller
             return response()->json(['error' => 'لم يتم تقديم أي أكواد بريدية'], 400);
         }
         $results = [];
-        
+
         foreach ($barcodes as $barcode) {
-            $response = Http::timeout(60)->get('https://api.zenrows.com/v1/', [
-                'apikey' => '215f715b11ff5ae14e6ea0362d12d5d9302adcbb',
-                'url' => "https://egyptpost.gov.eg/ar-eg/TrackTrace/GetShipmentDetails?barcode={$barcode}",
-                'js_render' => 'true',
+            $response = Http::timeout(60)->get("https://mohamedsalamamousa-egypt-post-tracker2-production.up.railway.app/track", [
+                'barcode' => $barcode,
             ]);
 
-            $results[$barcode] = $response->successful()
-                ? $response->json()
-                : ['error' => 'Failed to fetch data'];
+
+            if ($response->successful()) {
+                $html = $response->body();
+
+                // استخرج الـ JSON من داخل الوسم <pre>
+                $json = strip_tags($html);
+
+                // حوّله إلى Array
+                $decoded = json_decode($json, true);
+
+                if (json_last_error() === JSON_ERROR_NONE) {
+                    $results[$barcode] = $decoded;
+                } else {
+                    $results[$barcode] = ['error' => 'خطأ في تحليل بيانات JSON'];
+                }
+            } else {
+                $results[$barcode] = ['error' => 'فشل في جلب البيانات من الخادم'];
+            }
         }
 
         return response()->json($results);

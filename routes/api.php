@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/track-shipment', [TrackingController::class, 'track']);
+// Route::get('/tracking/show', [TrackingController::class, 'tracking'])->name('tracking.show');

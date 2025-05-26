@@ -161,9 +161,14 @@
                     throw new Error('البيانات المستلمة غير صحيحة أو فارغة');
                 }
 
+
                 for (const [barcode, resultWrapper] of Object.entries(responseData)) {
                     timelineHTML += `<h6 class="text-secondary mt-4">الشحنة: ${barcode}</h6>`;
-
+                    if (!resultWrapper || typeof resultWrapper !== 'object') {
+                        timelineHTML +=
+                            `<div class="timeline-step"><small class="text-danger">لا يمكن قراءة بيانات هذه الشحنة</small></div>`;
+                        continue;
+                    }
                     if (resultWrapper.error) {
                         timelineHTML +=
                             `<div class="timeline-step"><small class="text-danger">${resultWrapper.error}</small></div>`;
