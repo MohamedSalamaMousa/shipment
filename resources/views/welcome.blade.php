@@ -146,7 +146,7 @@
                     <button type="button" class="btn btn-primary" title="تتبع"
                         id="btn-mainslider-tracksubmit">تتبع</button>
                 </div>
-                <h6 class="block-info-text text-muted mt-2 text-start" style="font-size: 14px">
+                {{-- <h6 class="block-info-text text-muted mt-2 text-start" style="font-size: 14px">
                     أدخل عدة أرقام تتبع مفصولة بمسافة أو فاصلة.<br />إذا لم يعمل رقم
                     التتبع الخاص بك، تحقق من التنسيق أو اضغط
                     <a href="/support/help-center">هنا</a>
@@ -155,7 +155,7 @@
                     يمكن للعملاء المسجلين الوصول إلى التتبع المتقدم عن طريق تسجيل الدخول
                     إلى حساباتهم من.
                     <a href="/ae/en/track/advanced-tracking">هنا</a>.
-                </h6>
+                </h6> --}}
             </div>
 
             <!-- Home Options -->
