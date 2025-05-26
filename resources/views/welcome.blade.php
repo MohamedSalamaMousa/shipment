@@ -241,9 +241,8 @@
                         <!-- Card 1 -->
                         <div class="col-md-4 mb-4">
                             <div class="d-flex flex-column align-items-center">
-                                <img src="{{ asset('assets/images/pngtree.avif') }}"
-                                    class="rounded-circle mb-3" alt="سلسلة إمداد"
-                                    style="width: 120px; height: 120px; object-fit: cover;">
+                                <img src="{{ asset('assets/images/pngtree.avif') }}" class="rounded-circle mb-3"
+                                    alt="سلسلة إمداد" style="width: 120px; height: 120px; object-fit: cover;">
                                 <h5 class="fw-semibold">سلاسل إمداد موثوقة</h5>
                                 <p class="text-muted">حلول لوجستية يمكنك الاعتماد عليها، لتجاري متطلبات السوق بشكل سريع.
                                 </p>
