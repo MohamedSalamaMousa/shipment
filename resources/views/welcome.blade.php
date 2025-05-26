@@ -189,7 +189,7 @@
                             </div>
                         </div>
 
-                         <div class="col-md-4 d-flex justify-content-center">
+                        <div class="col-md-4 d-flex justify-content-center">
                             <div class="second-card text-center bg-light rounded-4 p-4"
                                 style="width: 100%; max-width: 280px">
                                 <a class="btn btn-card" title="تتبع الشحنة" href="{{ route('tracking.index') }}">
@@ -288,16 +288,13 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <!-- App Image -->
-                        <div class="col-md-5 text-center mb-4 mb-md-0 position-relative">
-                            <img src="your-app-mockup.png" class="img-fluid" alt="App Mockup"
+                        <div class="col-md-3 text-center mb-4 mb-md-0 position-relative">
+                            <img src="{{ asset('assets/images/tetex.webp') }}" class="img-fluid" alt="App Mockup"
                                 style="max-height: 450px;">
-                            <img src="floating-box.png"
-                                class="position-absolute top-0 start-50 translate-middle-x opacity-50"
-                                style="width: 120px; animation: floatBox 3s infinite alternate;">
                         </div>
 
                         <!-- Content -->
-                        <div class="col-md-7">
+                        <div class="col-md-5">
                             <h3 class="fw-bold mb-3">حمّل تطبيق تتكس</h3>
                             <div class="d-flex flex-column gap-2 mb-4">
                                 <div class="d-flex align-items-center gap-2">
@@ -319,7 +316,7 @@
                             <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start">
 
                                 <!-- App Store -->
-                                <a href="#"
+                                <a href="https://apps.apple.com/eg/app/tetex/id6497331317"
                                     class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
                                     <i class="fab fa-apple fa-lg"></i>
                                     <div class="text-start">
@@ -329,22 +326,12 @@
                                 </a>
 
                                 <!-- Google Play -->
-                                <a href="#"
+                                <a href="https://play.google.com/store/apps/details?id=com.tetex.app&hl=en"
                                     class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
                                     <i class="fab fa-google-play fa-lg"></i>
                                     <div class="text-start">
                                         <div class="small">Get it on</div>
                                         <strong>Google Play</strong>
-                                    </div>
-                                </a>
-
-                                <!-- AppGallery -->
-                                <a href="#"
-                                    class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
-                                    <i class="fas fa-store fa-lg"></i>
-                                    <div class="text-start">
-                                        <div class="small">Available on</div>
-                                        <strong>AppGallery</strong>
                                     </div>
                                 </a>
                             </div>
@@ -354,6 +341,13 @@
                                 <span class="text-warning fs-4">★★★★★</span>
                                 <div>أكثر من 100,000 تقييم</div>
                             </div>
+                        </div>
+
+                        <!-- Mobile Image (Delivery Man + Phone Mockup) -->
+                        <div class="col-md-4 text-center mt-5 mt-md-0" id="mobile-image">
+                            <!-- Phone App UI Mockup -->
+                            <img src="{{ asset('assets/images/mobile_icon.webp') }}" alt="Mobile App"
+                                class="img-fluid" style="max-height: 550px; z-index: 1;">
                         </div>
                     </div>
                 </div>
