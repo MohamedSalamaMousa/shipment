@@ -255,7 +255,8 @@
                 </div>
 
                 <!-- Domestic Tab -->
-                <div class="tab-pane fade active show" id="pills-domestic" role="tabpanel" aria-labelledby="pills-domestic-tab">
+                <div class="tab-pane fade active show" id="pills-domestic" role="tabpanel"
+                    aria-labelledby="pills-domestic-tab">
                     <form id="priceCalculatorForm" class="row g-3">
                         <!-- من المحافظة -->
                         <div class="col-md-4">
@@ -351,17 +352,6 @@
                                 <div class="shipping-detail"><i class="fas fa-money-bill-wave"></i> التحصيل: &nbsp;<strong>${data.fee_per_unit}</strong> &nbsp; لكل 1000 ج</div>
                                 <div class="shipping-detail"><i class="fas fa-clock"></i> وقت الاستلام: &nbsp;<strong>${data.receipt_time}</strong></div>
                                 <div class="shipping-detail"><i class="fas fa-shipping-fast"></i> وقت التوصيل: &nbsp;<strong>${data.delivery_time}</strong></div>
-
-                                <div>
-                                <a class="text-danger d-inline-block mt-2" data-bs-toggle="collapse" href="#moreDetails" role="button" aria-expanded="false" aria-controls="moreDetails">
-                                    <i class="fas fa-chevron-down"></i> تفاصيل أكثر
-                                </a>
-                                <div class="collapse mt-2 text-muted small" id="moreDetails">
-                                    <div>الأسعار متغيرة حسب محافظة الاستلام</div>
-                                    <div>أقصى وزن 30000 جرام للقطعة</div>
-                                    <div>الشحن طيران فقط</div>
-                                </div>
-                            </div>
                                 `;
 
                             $('#shipping-price-result')
@@ -410,6 +400,7 @@
                             let resultHtml = `
                             <div class="shipping-detail"><i class="fas fa-globe"></i> سعر الشحن الدولي: &nbsp;<strong>${data.price} جنيه</strong></div>
                             <div class="shipping-detail"><i class="fas fa-plus-circle"></i> السعر الإضافي: &nbsp;<strong>${data.additional_price} جنيه</strong></div>
+
                             <div>
                                 <a class="text-danger d-inline-block mt-2" data-bs-toggle="collapse" href="#moreDetails" role="button" aria-expanded="false" aria-controls="moreDetails">
                                     <i class="fas fa-chevron-down"></i> تفاصيل أكثر
@@ -418,6 +409,12 @@
                                     <div>الأسعار متغيرة حسب محافظة الاستلام</div>
                                     <div>أقصى وزن 30000 جرام للقطعة</div>
                                     <div>الشحن طيران فقط</div>
+                                    <div><i class="fas fa-check-circle text-success me-1"></i> مدة التسليم من 5 أيام إلى 8 أيام عمل</div>
+                                    <div><i class="fas fa-check-circle text-success me-1"></i> مدة الاستلام 3 أيام عمل</div>
+                                    <div><i class="fas fa-check-circle text-success me-1"></i> إتاحة التتبع</div>
+                                    <div><i class="fas fa-check-circle text-success me-1"></i> مصاريف الشحن عند الاستلام</div>
+                                    <div><i class="fas fa-check-circle text-success me-1"></i> المرتجع مجاني</div>
+                                    <div><i class="fas fa-check-circle text-success me-1"></i> لا يوجد تحصيل من المرسل إليه</div>
                                 </div>
                             </div>
                             `;
