@@ -189,6 +189,20 @@
                             </div>
                         </div>
 
+                         <div class="col-md-4 d-flex justify-content-center">
+                            <div class="second-card text-center bg-light rounded-4 p-4"
+                                style="width: 100%; max-width: 280px">
+                                <a class="btn btn-card" title="تتبع الشحنة" href="{{ route('tracking.index') }}">
+                                    <div class="img-wrap">
+                                        {{-- tracking icon --}}
+                                        <i class="fa-solid fa-location-crosshairs fs-1 text-danger"></i>
+                                    </div>
+                                    <h3>تتبع شحنة</h3>
+                                    <p>تتبع شحنتك في اي وقت باستخدام رقم التتبع</p>
+
+                                </a>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
