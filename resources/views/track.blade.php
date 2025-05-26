@@ -1,18 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container min-vh-100 py-5">
+    <div class="min-vh-100 py-5 px-3">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card p-4 shadow-sm">
-                    <h4 class="text-center text-primary mb-4">تتبع الشحنات</h4>
+            <div class="col-lg-10">
+                <div class="card p-4 shadow-lg border-0">
+                    <h4 class="text-center text-primary mb-4 fw-bold">🔍 تتبع الشحنات</h4>
 
                     <form id="trackingForm">
                         @csrf
                         <div class="mb-3">
-
-
-                            <textarea class="form-control" name="barcodes" rows="5" placeholder="أدخل الأكواد البريدية (واحدة لكل سطر)"
+                            <label for="barcodeTextarea" class="form-label fw-semibold text-muted">أرقام التتبع</label>
+                            <textarea class="form-control shadow-sm" name="barcodes" rows="5" placeholder="أدخل رقم التتبع (واحد في كل سطر)"
                                 id="barcodeTextarea">{{ request('barcode') }}</textarea>
 
                             <script>
@@ -23,22 +22,22 @@
                                     }
                                 });
                             </script>
-
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-success">تتبع</button>
+                            <button type="submit" class="btn btn-success btn-lg fw-bold">
+                                🚚 تتبع الشحنات
+                            </button>
                         </div>
                     </form>
 
-                    <!-- رسالة الانتظار -->
-                    <div id="loadingMessage" class="text-center text-secondary my-3" style="display: none;">
-                        <div class="spinner-border text-primary" role="status" style="width: 2rem; height: 2rem;">
+                    <div id="loadingMessage" class="text-center text-secondary my-4" style="display: none;">
+                        <div class="spinner-border text-primary" role="status" style="width: 2.5rem; height: 2.5rem;">
                             <span class="visually-hidden">جارٍ التحميل...</span>
                         </div>
-                        <div class="mt-2">جاري تحميل بيانات الشحنات، يرجى الانتظار...</div>
+                        <p class="mt-3 fs-6">جاري تحميل بيانات الشحنات، يرجى الانتظار...</p>
                     </div>
 
-                    <div id="timeline" class="mt-4"></div>
+                    <div id="timeline" class="mt-5"></div>
                 </div>
             </div>
         </div>
@@ -46,65 +45,76 @@
 
     <style>
         body {
-            background-color: #f5f7fa;
+            background-color: #f4f6fa;
             font-family: 'Segoe UI', sans-serif;
         }
 
         .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .timeline-horizontal {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            flex-wrap: nowrap;
             overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 24px;
+            padding: 1.5rem 1rem;
+            border-top: 2px dashed #dcdcdc;
             position: relative;
-            padding: 2rem 0;
-            border-top: 2px solid #dee2e6;
-            margin-top: 10px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            margin-top: 1rem;
+        }
+
+        .timeline-horizontal::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .timeline-horizontal::-webkit-scrollbar-thumb {
+            background-color: #999;
+            border-radius: 4px;
         }
 
         .timeline-step {
+            flex: 0 0 auto;
+            min-width: 160px;
+            scroll-snap-align: start;
             text-align: center;
-            position: relative;
-            flex: 1;
-            min-width: 140px;
-            padding: 0 10px;
         }
 
         .step-icon {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             margin: 0 auto 10px;
             border-radius: 50%;
+            font-size: 24px;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 22px;
-            color: white;
         }
 
         .step-label {
             font-weight: bold;
-            font-size: 14px;
+            font-size: 15px;
             color: #333;
         }
 
         .step-details {
-            font-size: 12px;
+            font-size: 13px;
             color: #555;
-            margin-top: 5px;
+            margin-top: 6px;
+            text-align: start;
         }
 
         .active .step-icon {
-            box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.3);
+            box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.4);
         }
 
         .finished .step-icon {
-            box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.3);
+            box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.4);
         }
 
         .yellow {
@@ -125,6 +135,36 @@
 
         .orange {
             background-color: #fd7e14;
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-step {
+                min-width: 140px;
+            }
+
+            .step-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .step-label {
+                font-size: 14px;
+            }
+
+            .step-details {
+                font-size: 12px;
+            }
         }
     </style>
 
@@ -163,7 +203,12 @@
 
 
                 for (const [barcode, resultWrapper] of Object.entries(responseData)) {
-                    timelineHTML += `<h6 class="text-secondary mt-4">الشحنة: ${barcode}</h6>`;
+                    timelineHTML += `<div class="timeline-horizontal">`;
+                    timelineHTML += `
+    <div class="d-flex justify-content-center">
+        <h6 class="text-secondary mt-4">الشحنة: ${barcode}</h6>
+    </div>
+`;
                     if (!resultWrapper || typeof resultWrapper !== 'object') {
                         timelineHTML +=
                             `<div class="timeline-step"><small class="text-danger">لا يمكن قراءة بيانات هذه الشحنة</small></div>`;
@@ -184,7 +229,7 @@
                         continue;
                     }
 
-                    timelineHTML += `<div class="timeline-horizontal">`;
+
 
                     validItems.forEach(item => {
                         const statusMap = {
@@ -229,10 +274,10 @@
                                 <div class="step-icon ${step.color}">${step.icon}</div>
                                 <div class="step-label">${step.label}</div>
                                 <div class="step-details">
-                                    ${item.date || ''} ${item.time || ''}<br>
+                                    ${item.mainStatus || ''}<br>
                                     ${item.location ? `الموقع: ${item.location}` : ''}<br>
                                     ${item.city || ''} ${item.country || ''}<br>
-                                    ${item.mainStatus || ''}
+                                    ${item.date || ''} ${item.time || ''}
                                 </div>
                             </div>
                         `;
