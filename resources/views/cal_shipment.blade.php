@@ -72,9 +72,89 @@
     .alert-danger:hover {
         transform: translateY(-5px);
         /* Slight lift on hover */
-        box-shadow: 0 12px 25px rgba(0, 196, 204, 0.4);
+        box-shadow: 0 12px 25px rgba(243, 121, 137, 0.4);
         /* Enhanced shadow on hover */
     }
+
+    /* #shipping-price-result {
+        background-color: #f8f9fa;
+        border: 2px solid #dc3545;
+        color: #212529;
+        border-radius: 15px;
+        padding: 20px;
+        font-size: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: right;
+        direction: rtl;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #shipping-price-result::before {
+        content: "🚚 ";
+        font-size: 18px;
+        margin-left: 8px;
+        vertical-align: middle;
+    }
+
+    #global-shipping-price-result {
+        background-color: #f8f9fa;
+        border: 2px solid #dc3545;
+        color: #212529;
+        border-radius: 15px;
+        padding: 20px;
+        font-size: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: right;
+        direction: rtl;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #global-shipping-price-result::before {
+        content: "🌍 ";
+        font-size: 18px;
+        margin-left: 8px;
+        vertical-align: middle;
+    } */
+
+    .alert-shipping-custom {
+        background-color: #f9f9f9;
+        color: #333;
+        border-left: 5px solid #dc3545;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        padding: 20px 25px;
+        border-radius: 12px;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+        position: relative;
+    }
+
+    .alert-shipping-custom h6 {
+        font-weight: bold;
+        color: #dc3545;
+        margin-bottom: 12px;
+    }
+
+    .alert-shipping-custom i {
+        color: #dc3545;
+        margin-left: 8px;
+    }
+
+    .alert-shipping-custom .shipping-detail {
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+    }
+
+    .alert-shipping-custom .shipping-detail i {
+        margin-left: 10px;
+        font-size: 1rem;
+        color: #555;
+    }
+
 
     /* Fade-in animation */
     @keyframes fadeIn {
@@ -96,9 +176,10 @@
         /* FontAwesome check-circle for info, can change for danger */
         font-family: 'Font Awesome 6 Free';
         font-weight: 900;
+
         color: #00c4cc;
         /* Cyan for info, red for danger */
-        margin-right: 10px;
+        margin-right: -15px;
         /* Space between icon and text */
         font-size: 20px;
         vertical-align: middle;
@@ -108,6 +189,7 @@
         content: '\f06a';
         /* FontAwesome times-circle for danger */
         color: #dc3545;
+        padding-left: 10px;
         /* Red for danger */
     }
 </style>
@@ -138,7 +220,7 @@
             <!-- Tabs Content -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- International Tab -->
-                <div class="tab-pane fade show active" id="pills-international" role="tabpanel"
+                <div class="tab-pane fade" id="pills-international" role="tabpanel"
                     aria-labelledby="pills-international-tab">
                     <form id="globalPriceForm" class="row g-3">
                         <div class="col-md-4">
@@ -159,7 +241,9 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" name="shipping_weight" min="1" max="30000" placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" class="form-control" min="0" />
+                            <input type="number" name="shipping_weight" min="1" max="30000"
+                                placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" class="form-control"
+                                min="0" />
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-danger rounded-5 mt-3">
@@ -167,11 +251,11 @@
                             </button>
                         </div>
                     </form>
-                    <div id="global-shipping-price-result" class="alert d-none mt-3"></div>
+                    <div id="global-shipping-price-result" class="alert-shipping-custom d-none mt-3"></div>
                 </div>
 
                 <!-- Domestic Tab -->
-                <div class="tab-pane fade" id="pills-domestic" role="tabpanel" aria-labelledby="pills-domestic-tab">
+                <div class="tab-pane fade active show" id="pills-domestic" role="tabpanel" aria-labelledby="pills-domestic-tab">
                     <form id="priceCalculatorForm" class="row g-3">
                         <!-- من المحافظة -->
                         <div class="col-md-4">
@@ -201,19 +285,21 @@
                         <!-- الوزن -->
                         <div class="col-md-4">
                             <label class="form-label">الوزن *</label>
-                            <input type="number" class="form-control" min="1" max="30000" placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" name="weight" min="0" required />
+                            <input type="number" class="form-control" min="1" max="30000"
+                                placeholder="الوزن بالجرام و اقصى وزن 30000 جرام للشحنه" name="weight" min="0"
+                                required />
                         </div>
 
                         <!-- زر الإرسال -->
                         <div class="col-12">
                             <button type="submit" class="btn btn-danger rounded-5 mt-3">
-                                احصل على الاسعار
+                                احصل على السعر المحلي
                             </button>
                         </div>
 
                         <!-- عرض السعر -->
                         <div class="col-12">
-                            <div id="shipping-price-result" class="alert alert-info d-none mt-3"></div>
+                            <div id="shipping-price-result" class="alert-shipping-custom d-none mt-3"></div>
                         </div>
                     </form>
                 </div>
@@ -260,28 +346,39 @@
                             const data = response.data;
 
                             let resultHtml = `
-                            <strong>سعر الشحن المحلي:</strong> ${data.price} جنيه<br>
-                            <strong>الوزن:</strong> ${data.k_Local_price}  جنيه لكل كيلوجرام تكراري<br>
-                            <strong>التحصيل:</strong> ${data.fee_per_unit}  لكل 1000 ج<br>
-                            <strong>وقت الاستلام:</strong> ${data.receipt_time}<br>
-                            <strong>وقت التوصيل:</strong> ${data.delivery_time}
-                        `;
+                                <div class="shipping-detail"><i class="fas fa-truck"></i> سعر الشحن المحلي: &nbsp;<strong>${data.price} جنيه</strong></div>
+                                <div class="shipping-detail"><i class="fas fa-weight-hanging"></i> الوزن:  &nbsp;<strong>${data.k_Local_price} جنيه</strong> &nbsp; لكل كيلوجرام تكراري</div>
+                                <div class="shipping-detail"><i class="fas fa-money-bill-wave"></i> التحصيل: &nbsp;<strong>${data.fee_per_unit}</strong> &nbsp; لكل 1000 ج</div>
+                                <div class="shipping-detail"><i class="fas fa-clock"></i> وقت الاستلام: &nbsp;<strong>${data.receipt_time}</strong></div>
+                                <div class="shipping-detail"><i class="fas fa-shipping-fast"></i> وقت التوصيل: &nbsp;<strong>${data.delivery_time}</strong></div>
+
+                                <div>
+                                <a class="text-danger d-inline-block mt-2" data-bs-toggle="collapse" href="#moreDetails" role="button" aria-expanded="false" aria-controls="moreDetails">
+                                    <i class="fas fa-chevron-down"></i> تفاصيل أكثر
+                                </a>
+                                <div class="collapse mt-2 text-muted small" id="moreDetails">
+                                    <div>الأسعار متغيرة حسب محافظة الاستلام</div>
+                                    <div>أقصى وزن 30000 جرام للقطعة</div>
+                                    <div>الشحن طيران فقط</div>
+                                </div>
+                            </div>
+                                `;
 
                             $('#shipping-price-result')
-                                .removeClass('d-none alert-danger')
-                                .addClass('alert-info')
-                                .html(resultHtml);
+                                .removeClass('d-none alert-danger').html(resultHtml);
                         } else {
                             $('#shipping-price-result')
-                                .removeClass('d-none alert-info')
-                                .addClass('alert-danger')
+                                .removeClass('d-none')
+                                .removeClass('alert-shipping-custom')
+                                .addClass('alert alert-danger')
                                 .text('تعذر جلب بيانات السعر، الرجاء المحاولة مرة أخرى.');
                         }
                     },
                     error: function() {
                         $('#shipping-price-result')
-                            .removeClass('d-none alert-info')
-                            .addClass('alert-danger')
+                            .removeClass('d-none')
+                            .removeClass('alert-shipping-custom')
+                            .addClass('alert alert-danger')
                             .text('حدث خطأ أثناء حساب السعر. تأكد من صحة البيانات.');
                     }
                 });
@@ -311,27 +408,37 @@
                             const data = response.data;
 
                             let resultHtml = `
-                            <strong>سعر الشحن الدولي:</strong> ${data.price} جنيه<br>
-                            <strong>السعر الإضافي:</strong> ${data.additional_price} جنيه<br>
-                        `;
+                            <div class="shipping-detail"><i class="fas fa-globe"></i> سعر الشحن الدولي: &nbsp;<strong>${data.price} جنيه</strong></div>
+                            <div class="shipping-detail"><i class="fas fa-plus-circle"></i> السعر الإضافي: &nbsp;<strong>${data.additional_price} جنيه</strong></div>
+                            <div>
+                                <a class="text-danger d-inline-block mt-2" data-bs-toggle="collapse" href="#moreDetails" role="button" aria-expanded="false" aria-controls="moreDetails">
+                                    <i class="fas fa-chevron-down"></i> تفاصيل أكثر
+                                </a>
+                                <div class="collapse mt-2 text-muted small" id="moreDetails">
+                                    <div>الأسعار متغيرة حسب محافظة الاستلام</div>
+                                    <div>أقصى وزن 30000 جرام للقطعة</div>
+                                    <div>الشحن طيران فقط</div>
+                                </div>
+                            </div>
+                            `;
 
                             $('#global-shipping-price-result')
                                 .removeClass('d-none alert-danger')
-                                .addClass('alert-info')
+                                .addClass('alert-shipping-custom')
                                 .html(resultHtml);
                         } else {
                             $('#global-shipping-price-result')
-                                .removeClass('d-none alert-info')
-                                .addClass('alert-danger')
+                                .removeClass('d-none alert-shipping-custom')
+                                .addClass('alert alert-danger')
                                 .text(
                                     'تعذر جلب بيانات السعر الدولي، الرجاء المحاولة مرة أخرى.');
                         }
                     },
                     error: function() {
                         $('#global-shipping-price-result')
-                            .removeClass('d-none alert-info')
-                            .addClass('alert-danger')
-                            .text('حدث خطأ أثناء حساب السعر الدولي. تأكد من صحة البيانات.');
+                            .removeClass('d-none alert-shipping-custom')
+                            .addClass('alert alert-danger')
+                            .text('حدث خطأ أثناء حساب السعر الدولي. تأكد من صحة البيانات . ');
                     }
                 });
             });

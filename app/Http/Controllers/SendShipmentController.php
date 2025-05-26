@@ -44,7 +44,9 @@ class SendShipmentController extends Controller
             'beneficiary_name' => 'nullable',
         ]);
 
-        
+        $submissionType = $request->input('submission_type', 'finish');
+
+
         $validated['is_collection_included'] = filter_var(
             $request->input('is_collection_included', false),
             FILTER_VALIDATE_BOOLEAN
@@ -94,6 +96,14 @@ class SendShipmentController extends Controller
 
             return redirect()->back()->with('error', 'فشل في إرسال الشحنة.');
         }
+
+        if ($submissionType === 'add_more') {
+            return response()->json([
+                'success' => true,
+                'message' => 'تم حفظ الشحنة بنجاح. يمكنك إضافة شحنة جديدة.'
+            ]);
+        }
+
 
         return redirect()->route('home')->with('success_send_shipment', 'تم ارسال الشحنة بنجاح');
     }
