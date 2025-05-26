@@ -220,7 +220,7 @@
             <!-- Tabs Content -->
             <div class="tab-content" id="pills-tabContent">
                 <!-- International Tab -->
-                <div class="tab-pane fade show active" id="pills-international" role="tabpanel"
+                <div class="tab-pane fade" id="pills-international" role="tabpanel"
                     aria-labelledby="pills-international-tab">
                     <form id="globalPriceForm" class="row g-3">
                         <div class="col-md-4">
@@ -255,7 +255,7 @@
                 </div>
 
                 <!-- Domestic Tab -->
-                <div class="tab-pane fade" id="pills-domestic" role="tabpanel" aria-labelledby="pills-domestic-tab">
+                <div class="tab-pane fade active show" id="pills-domestic" role="tabpanel" aria-labelledby="pills-domestic-tab">
                     <form id="priceCalculatorForm" class="row g-3">
                         <!-- من المحافظة -->
                         <div class="col-md-4">
@@ -293,7 +293,7 @@
                         <!-- زر الإرسال -->
                         <div class="col-12">
                             <button type="submit" class="btn btn-danger rounded-5 mt-3">
-                                احصل على الاسعار
+                                احصل على السعر المحلي
                             </button>
                         </div>
 
@@ -347,11 +347,22 @@
 
                             let resultHtml = `
                                 <div class="shipping-detail"><i class="fas fa-truck"></i> سعر الشحن المحلي: &nbsp;<strong>${data.price} جنيه</strong></div>
-                                <div class="shipping-detail"><i class="fas fa-weight-hanging"></i> الوزن:  &nbsp;<strong>${data.k_Local_price} جنيه</strong> لكل كيلوجرام تكراري</div>
-                                <div class="shipping-detail"><i class="fas fa-money-bill-wave"></i> التحصيل: &nbsp;<strong>${data.fee_per_unit}</strong> لكل 1000 ج</div>
+                                <div class="shipping-detail"><i class="fas fa-weight-hanging"></i> الوزن:  &nbsp;<strong>${data.k_Local_price} جنيه</strong> &nbsp; لكل كيلوجرام تكراري</div>
+                                <div class="shipping-detail"><i class="fas fa-money-bill-wave"></i> التحصيل: &nbsp;<strong>${data.fee_per_unit}</strong> &nbsp; لكل 1000 ج</div>
                                 <div class="shipping-detail"><i class="fas fa-clock"></i> وقت الاستلام: &nbsp;<strong>${data.receipt_time}</strong></div>
                                 <div class="shipping-detail"><i class="fas fa-shipping-fast"></i> وقت التوصيل: &nbsp;<strong>${data.delivery_time}</strong></div>
-                        `;
+
+                                <div>
+                                <a class="text-danger d-inline-block mt-2" data-bs-toggle="collapse" href="#moreDetails" role="button" aria-expanded="false" aria-controls="moreDetails">
+                                    <i class="fas fa-chevron-down"></i> تفاصيل أكثر
+                                </a>
+                                <div class="collapse mt-2 text-muted small" id="moreDetails">
+                                    <div>الأسعار متغيرة حسب محافظة الاستلام</div>
+                                    <div>أقصى وزن 30000 جرام للقطعة</div>
+                                    <div>الشحن طيران فقط</div>
+                                </div>
+                            </div>
+                                `;
 
                             $('#shipping-price-result')
                                 .removeClass('d-none alert-danger').html(resultHtml);
@@ -399,7 +410,17 @@
                             let resultHtml = `
                             <div class="shipping-detail"><i class="fas fa-globe"></i> سعر الشحن الدولي: &nbsp;<strong>${data.price} جنيه</strong></div>
                             <div class="shipping-detail"><i class="fas fa-plus-circle"></i> السعر الإضافي: &nbsp;<strong>${data.additional_price} جنيه</strong></div>
-                        `;
+                            <div>
+                                <a class="text-danger d-inline-block mt-2" data-bs-toggle="collapse" href="#moreDetails" role="button" aria-expanded="false" aria-controls="moreDetails">
+                                    <i class="fas fa-chevron-down"></i> تفاصيل أكثر
+                                </a>
+                                <div class="collapse mt-2 text-muted small" id="moreDetails">
+                                    <div>الأسعار متغيرة حسب محافظة الاستلام</div>
+                                    <div>أقصى وزن 30000 جرام للقطعة</div>
+                                    <div>الشحن طيران فقط</div>
+                                </div>
+                            </div>
+                            `;
 
                             $('#global-shipping-price-result')
                                 .removeClass('d-none alert-danger')
