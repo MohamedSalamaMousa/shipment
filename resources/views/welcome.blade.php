@@ -61,6 +61,18 @@
     }
 </style>
 
+<style>
+    @keyframes floatBox {
+        0% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(-20px);
+        }
+    }
+</style>
+
 @section('content')
     <!-- Toast Container -->
     @if (session('success_send_shipment'))
@@ -102,7 +114,7 @@
     @endif
 
     <section id="main-content" class="p-md-5 m-md-5 min-vh-100">
-        <div class="container">
+        <div class="container-fluid">
 
             <!-- Hero Content -->
             <div class="hero-content">
@@ -134,7 +146,7 @@
                     <button type="button" class="btn btn-primary" title="تتبع"
                         id="btn-mainslider-tracksubmit">تتبع</button>
                 </div>
-                <h6 class="block-info-text text-muted mt-2" style="font-size: 14px">
+                <h6 class="block-info-text text-muted mt-2 text-start" style="font-size: 14px">
                     أدخل عدة أرقام تتبع مفصولة بمسافة أو فاصلة.<br />إذا لم يعمل رقم
                     التتبع الخاص بك، تحقق من التنسيق أو اضغط
                     <a href="/support/help-center">هنا</a>
@@ -222,6 +234,137 @@
                     </button>
                 </div>
             </div>
+            <div id="carousel-cards" class="py-5 text-center" style="background-color: #f1f5f9;">
+                <div class="container">
+                    <h2 class="fw-bold mb-5">الشحن لا يعرف حدوداً</h2>
+                    <div class="row justify-content-center">
+                        <!-- Card 1 -->
+                        <div class="col-md-4 mb-4">
+                            <div class="d-flex flex-column align-items-center">
+                                <img src="{{ asset('assets/images/pngtree.avif') }}"
+                                    class="rounded-circle mb-3" alt="سلسلة إمداد"
+                                    style="width: 120px; height: 120px; object-fit: cover;">
+                                <h5 class="fw-semibold">سلاسل إمداد موثوقة</h5>
+                                <p class="text-muted">حلول لوجستية يمكنك الاعتماد عليها، لتجاري متطلبات السوق بشكل سريع.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="col-md-4 mb-4">
+                            <div class="d-flex flex-column align-items-center">
+                                <img src="{{ asset('assets/images/solution-solving-problem.jpg') }}"
+                                    class="rounded-circle mb-3" alt="حلول مرنة"
+                                    style="width: 120px; height: 120px; object-fit: fill;">
+                                <h5 class="fw-semibold">حلول مرنة</h5>
+                                <p class="text-muted">حلول مصممة حسب الطلب لتناسب احتياجات العملاء بكل كفاءة.</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="col-md-4 mb-4">
+                            <div class="d-flex flex-column align-items-center">
+                                <img class="rounded-circle mb-3" src="{{ asset('assets/images/images.png') }}"
+                                    alt="خدمات مستدامة" style="width: 120px; height: 120px; object-fit: cover;">
+                                <h5 class="fw-semibold">خدمات لوجستية مستدامة</h5>
+                                <p class="text-muted">خدمات صديقة للبيئة تساعدك على رفع أرباحك وتقليل الأثر البيئي.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" py-5 text-center text-md-start">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <!-- App Image -->
+                        <div class="col-md-5 text-center mb-4 mb-md-0 position-relative">
+                            <img src="your-app-mockup.png" class="img-fluid" alt="App Mockup"
+                                style="max-height: 450px;">
+                            <img src="floating-box.png"
+                                class="position-absolute top-0 start-50 translate-middle-x opacity-50"
+                                style="width: 120px; animation: floatBox 3s infinite alternate;">
+                        </div>
+
+                        <!-- Content -->
+                        <div class="col-md-7">
+                            <h3 class="fw-bold mb-3">حمّل تطبيق تتكس</h3>
+                            <div class="d-flex flex-column gap-2 mb-4">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-geo-alt-fill text-danger fs-5"></i>
+                                    <span>تتبع شحنتك في الوقت الحالي</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-calendar-check-fill text-danger fs-5"></i>
+                                    <span>جدول مواعيد استلام وتسليم الشحنات</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="bi bi-shield-lock-fill text-danger fs-5"></i>
+                                    <span>ادفع بشكل آمن، بدون تلامس</span>
+                                </div>
+                            </div>
+
+                            <!-- Download Buttons -->
+                            <!-- Store Buttons -->
+                            <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start">
+
+                                <!-- App Store -->
+                                <a href="#"
+                                    class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
+                                    <i class="fab fa-apple fa-lg"></i>
+                                    <div class="text-start">
+                                        <div class="small">Download on</div>
+                                        <strong>App Store</strong>
+                                    </div>
+                                </a>
+
+                                <!-- Google Play -->
+                                <a href="#"
+                                    class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
+                                    <i class="fab fa-google-play fa-lg"></i>
+                                    <div class="text-start">
+                                        <div class="small">Get it on</div>
+                                        <strong>Google Play</strong>
+                                    </div>
+                                </a>
+
+                                <!-- AppGallery -->
+                                <a href="#"
+                                    class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
+                                    <i class="fas fa-store fa-lg"></i>
+                                    <div class="text-start">
+                                        <div class="small">Available on</div>
+                                        <strong>AppGallery</strong>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- Rating -->
+                            <div class="mt-3">
+                                <span class="text-warning fs-4">★★★★★</span>
+                                <div>أكثر من 100,000 تقييم</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-5 bg-white">
+                <div class="row align-items-center gy-5 justify-content-between d-flex ">
+                    <!-- Text Content -->
+                    <div class="col-md-6 text-start">
+                        <h2 class="fw-bold mb-3 ms-3 text-dark">نحن دائماً معك أينما كنت حول العالم!</h2>
+                        <p class="text-muted mb-4 ms-3">
+                            بفضل شبكتنا العالمية الواسعة، نحن دائماً على مقربة منك.
+                            نقدم لك حلولاً سلسة وفعّالة في الشحن السريع، والنقل، والخدمات اللوجستية.
+                        </p>
+                        <a href="#" class="btn btn-danger ms-3 rounded-pill px-4 py-2">اعثر على مكتب تتكس</a>
+                    </div>
+                    <!-- Map Image -->
+                    <div class="col-md-6 text-center">
+                        <img src="{{ asset('assets/images/map.webp') }}" alt="World Map" class="img-fluid"
+                            style="max-width: 100%;">
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
     <script>
