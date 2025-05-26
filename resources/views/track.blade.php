@@ -12,7 +12,7 @@
                         <div class="mb-3">
 
 
-                            <textarea class="form-control" name="barcodes" rows="5" placeholder="أدخل الأكواد البريدية (واحدة لكل سطر)"
+                            <textarea class="form-control" name="barcodes" rows="5" placeholder="أدخل رقم او ارقام التتبع (واحدة لكل سطر)"
                                 id="barcodeTextarea">{{ request('barcode') }}</textarea>
 
                             <script>
