@@ -1,7 +1,7 @@
 <header class="position-relative">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid px-3">
-            <a class="navbar-brand fw-bold text-danger" href="{{ route('home') }}">تيتكس</a>
+            <a class="navbar-brand fw-bold text-danger" href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.jpg') }}" alt="Logo" style="width: 50px; height: 50px;"></a>
 
             <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"

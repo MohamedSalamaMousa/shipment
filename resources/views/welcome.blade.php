@@ -59,6 +59,21 @@
     #serviceCarousel .carousel-item:hover i {
         transform: scale(1.2);
     }
+
+    .card-red {
+        background-color: #dc3545 !important;
+        color: #fff;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-red:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-red i {
+        color: #fff !important;
+    }
 </style>
 
 <style>
@@ -117,89 +132,104 @@
         <div class="container-fluid">
 
             <!-- Hero Content -->
-            <div class="hero-content">
-                <h2>تتبع شحناتك</h2>
-                @if (session('success'))
-                    <div id="successMessage" class="alert alert-success">
-                        {{ session('success') }}
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="hero-content">
+                    <h2>تتبع شحناتك</h2>
+                    @if (session('success'))
+                        <div id="successMessage" class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    <div class="form-track-group input-group col-md-12" id="divTrackingNumbers"></div>
+
+                    <div class="input-wrap position-relative mt-4">
+                        <input type="text" class="form-control" placeholder="ادخل رقم التتبع الخاص بك"
+                            id="TrackingNumber" name="TrackingNumber" />
+                        <span style="right: 10px" class="position-absolute top-50 text-danger translate-middle-y">
+                            <i class="fas fs-3 fa-box"></i>
+                        </span>
+                        <button type="button" class="btn btn-primary" title="تتبع"
+                            id="btn-mainslider-tracksubmit">تتبع</button>
                     </div>
-                @endif
 
-                {{-- {{ session('user_data')['name'] }} --}}
-
-                {{-- <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">
-                        تسجيل الخروج
-                    </button>
-                </form> --}}
-
-
-                <div class="form-track-group input-group col-md-12" id="divTrackingNumbers"></div>
-
-                <div class="input-wrap position-relative mt-4">
-                    <input type="text" class="form-control" placeholder="ادخل رقم التتبع الخاص بك" id="TrackingNumber"
-                        name="TrackingNumber" />
-                    <span style="right: 10px" class="position-absolute top-50 text-danger translate-middle-y">
-                        <i class="fas fs-3 fa-box"></i>
-                    </span>
-                    <button type="button" class="btn btn-primary" title="تتبع"
-                        id="btn-mainslider-tracksubmit">تتبع</button>
+                    </h6>
                 </div>
-                {{-- <h6 class="block-info-text text-muted mt-2 text-start" style="font-size: 14px">
-                    أدخل عدة أرقام تتبع مفصولة بمسافة أو فاصلة.<br />إذا لم يعمل رقم
-                    التتبع الخاص بك، تحقق من التنسيق أو اضغط
-                    <a href="/support/help-center">هنا</a>
-                    للحصول على الدعم.
-                    <br />
-                    يمكن للعملاء المسجلين الوصول إلى التتبع المتقدم عن طريق تسجيل الدخول
-                    إلى حساباتهم من.
-                    <a href="/ae/en/track/advanced-tracking">هنا</a>.
-                </h6> --}}
-            </div>
 
+                <!-- Carousel Section -->
+                <div class="container w-50 me-0 mt-5">
+                    <div id="heroImageCarousel" class="carousel slide shadow rounded-4 overflow-hidden"
+                        data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- Slide 1 -->
+                            <div class="carousel-item active">
+                                <img class="w-100 object-fit-fill" style="max-height: 400px !important"
+                                    src="{{ asset('assets/images/67aa0fbd28c0f.png') }}" class="d-block" alt="Slide 1">
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="carousel-item">
+                                <img class="w-100 object-fit-fill" style="max-height: 400px !important"
+                                    src="{{ asset('assets/images/6804c45fee1ce.png') }}" class="d-block" alt="Slide 2">
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroImageCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                            <span class="visually-hidden">السابق</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroImageCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                            <span class="visually-hidden">التالي</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
             <!-- Home Options -->
             <div class="home-options mt-5 pt-5">
                 <div class="container">
                     <div class="row justify-content-center align-content-center row-gap-5">
+                        <!-- حاسبة الأسعار -->
                         <div class="col-md-4 d-flex justify-content-center">
-                            <div class="first-card text-center bg-light rounded-4 p-4"
+                            <div class="first-card text-center card-red rounded-4 p-4"
                                 style="width: 100%; max-width: 280px">
-                                <a class="btn btn-card" href="{{ route('calculate.shipment') }}" title="حاسبة الاسعار">
+                                <a class="btn btn-card text-white" href="{{ route('calculate.shipment') }}"
+                                    title="حاسبة الاسعار">
                                     <div class="img-wrap">
-                                        <i class="fas fa-calculator fs-1 text-danger"></i>
+                                        <i class="fas fa-calculator fs-1"></i>
                                     </div>
-                                    <h3>حاسبة الاسعار</h3>
+                                    <h3 class="mt-3">حاسبة الاسعار</h3>
                                     <p>احصل على أسعار الشحن الفورية</p>
                                 </a>
                             </div>
                         </div>
 
+                        <!-- إرسال شحنة -->
                         <div class="col-md-4 d-flex justify-content-center">
-                            <div class="second-card text-center bg-light rounded-4 p-4"
+                            <div class="second-card text-center card-red rounded-4 p-4"
                                 style="width: 100%; max-width: 280px">
-                                <a class="btn btn-card" title="ارسال شحنة" href="{{ route('send_shipment.index') }}">
+                                <a class="btn btn-card text-white" title="ارسال شحنة"
+                                    href="{{ route('send_shipment.index') }}">
                                     <div class="img-wrap">
-                                        <i class="fa-solid fa-truck-fast fs-1 text-danger"></i>
+                                        <i class="fa-solid fa-truck-fast fs-1"></i>
                                     </div>
-                                    <h3>ارسال شحنة</h3>
+                                    <h3 class="mt-3">ارسال شحنة</h3>
                                     <p>ابدأ الشحن بسهولة. لا حاجة للتسجيل!</p>
-
                                 </a>
                             </div>
                         </div>
 
+                        <!-- تتبع شحنة -->
                         <div class="col-md-4 d-flex justify-content-center">
-                            <div class="second-card text-center bg-light rounded-4 p-4"
+                            <div class="second-card text-center card-red rounded-4 p-4"
                                 style="width: 100%; max-width: 280px">
-                                <a class="btn btn-card" title="تتبع الشحنة" href="{{ route('tracking.index') }}">
+                                <a class="btn btn-card text-white" title="تتبع الشحنة" href="{{ route('tracking.index') }}">
                                     <div class="img-wrap">
-                                        {{-- tracking icon --}}
-                                        <i class="fa-solid fa-location-crosshairs fs-1 text-danger"></i>
+                                        <i class="fa-solid fa-location-crosshairs fs-1"></i>
                                     </div>
-                                    <h3>تتبع شحنة</h3>
+                                    <h3 class="mt-3">تتبع شحنة</h3>
                                     <p>تتبع شحنتك في اي وقت باستخدام رقم التتبع</p>
-
                                 </a>
                             </div>
                         </div>
@@ -258,7 +288,8 @@
                                 <img src="{{ asset('assets/images/pngtree.avif') }}" class="rounded-circle mb-3"
                                     alt="سلسلة إمداد" style="width: 120px; height: 120px; object-fit: cover;">
                                 <h5 class="fw-semibold">سلاسل إمداد موثوقة</h5>
-                                <p class="text-muted">حلول لوجستية يمكنك الاعتماد عليها، لتجاري متطلبات السوق بشكل سريع.
+                                <p class="text-muted">حلول لوجستية يمكنك الاعتماد عليها، لتجاري متطلبات السوق بشكل
+                                    سريع.
                                 </p>
                             </div>
                         </div>
@@ -346,8 +377,8 @@
                         <!-- Mobile Image (Delivery Man + Phone Mockup) -->
                         <div class="col-md-4 text-center mt-5 mt-md-0" id="mobile-image">
                             <!-- Phone App UI Mockup -->
-                            <img src="{{ asset('assets/images/mobile_icon.webp') }}" alt="Mobile App"
-                                class="img-fluid" style="max-height: 550px; z-index: 1;">
+                            <img src="{{ asset('assets/images/mobile_icon.webp') }}" alt="Mobile App" class="img-fluid"
+                                style="max-height: 550px; z-index: 1;">
                         </div>
                     </div>
                 </div>
@@ -362,7 +393,7 @@
                             بفضل شبكتنا العالمية الواسعة، نحن دائماً على مقربة منك.
                             نقدم لك حلولاً سلسة وفعّالة في الشحن السريع، والنقل، والخدمات اللوجستية.
                         </p>
-                        <a href="#" class="btn btn-danger ms-3 rounded-pill px-4 py-2">اعثر على مكتب تتكس</a>
+                        {{-- <a href="#" class="btn btn-danger ms-3 rounded-pill px-4 py-2">اعثر على مكتب تتكس</a> --}}
                     </div>
                     <!-- Map Image -->
                     <div class="col-md-6 text-center">
