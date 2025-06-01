@@ -156,6 +156,7 @@
                 </div>
 
                 <!-- Carousel Section -->
+
                 <!-- لودر Spinner -->
                 <div id="carouselLoader" class="text-center my-5">
                     <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
