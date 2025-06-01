@@ -24,7 +24,7 @@ class TrackingController extends Controller
         //     'ENO30093775EG',
         //     'ENO30093680EG',
         // ]);
-        $barcodes = $request->input('barcodes');
+         $barcodes = $request->input('barcodes');
 
         if (empty($barcodes) || !is_array($barcodes)) {
             return response()->json(['error' => 'لم يتم تقديم أي أكواد بريدية'], 400);
@@ -32,7 +32,7 @@ class TrackingController extends Controller
         $results = [];
 
         foreach ($barcodes as $barcode) {
-            $response = Http::timeout(60)->get("https://mohamedsalamamousa-egypt-post-tracker2-production.up.railway.app/track", [
+            $response = Http::timeout(60)->get("http://16.170.230.179:3000/track", [
                 'barcode' => $barcode,
             ]);
 

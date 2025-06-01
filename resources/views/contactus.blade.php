@@ -15,28 +15,69 @@
 
             <div class="row justify-content-center text-center mb-5">
                 <div class="col-md-6 mb-3">
-                    <i class="fab fa-whatsapp fa-2x text-success mb-2"></i>
-                    <p class="mb-0">تواصل معنا للشكاوى والاقتراحات</p>
+                    <a id="whatsappSuggestions" href="#" target="_blank" class="text-dark text-decoration-none d-block">
+                        <i class="fab fa-whatsapp fa-2x text-success mb-2"></i><br>
+                        تواصل معنا للشكاوى والاقتراحات
+                    </a>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <i class="fab fa-whatsapp fa-2x text-success mb-2"></i>
-                    <p class="mb-0">تواصل مع مدير التعاقدات</p>
+                    <a id="whatsappManager" href="#" target="_blank" class="text-dark text-decoration-none d-block">
+                        <i class="fab fa-whatsapp fa-2x text-success mb-2"></i><br>
+                        تواصل مع مدير التعاقدات
+                    </a>
                 </div>
             </div>
 
+
             <div class="text-center mb-5">
                 <i class="fas fa-envelope fa-2x text-danger mb-2"></i>
-                <p>راسلنا على: <span class="fw-bold">Tetexpress@gmail.com</span></p>
+                <p>راسلنا على: <span class="fw-bold" id="emailAddress">Tetexpress@gmail.com</span></p>
             </div>
 
             <div class="text-center">
                 <h4 class="fw-bold mb-3">تابعنا على السوشيال ميديا</h4>
                 <div class="d-flex justify-content-center gap-4">
-                    <a href="#" class="text-dark fs-3"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-dark fs-3"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-dark fs-3"><i class="fab fa-twitter"></i></a>
+                    <a id="instagramLink" href="#" class="text-dark fs-3"><i class="fab fa-instagram"></i></a>
+                    <a id="facebookLink" href="#" class="text-dark fs-3"><i class="fab fa-facebook"></i></a>
+
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('https://admin.tetexexpress.com/api/socailMedia')
+                .then(response => response.json())
+                .then(data => {
+                    const social = data[0];
+
+                    // رقم واتساب للشكاوى
+                    if (social.whatsApp) {
+                        const wa = social.whatsApp.replace(/\D/g, '');
+                        document.getElementById('whatsappSuggestions').href = `https://wa.me/${wa}`;
+                    }
+
+                    // رقم مدير التعاقدات
+                    if (social.linkedIn) {
+                        const manager = social.linkedIn.replace(/\D/g, '');
+                        document.getElementById('whatsappManager').href = `https://wa.me/${manager}`;
+                    }
+
+                    // البريد الإلكتروني
+                    if (social.google) {
+                        document.getElementById('emailAddress').innerText = social.google;
+                    }
+
+                    // روابط السوشيال ميديا
+                    if (social.instagram) {
+                        document.getElementById('instagramLink').href = social.instagram;
+                    }
+                    if (social.facebook) {
+                        document.getElementById('facebookLink').href = social.facebook;
+                    }
+
+                })
+                .catch(error => console.error('فشل في تحميل بيانات التواصل:', error));
+        });
+    </script>
 @endsection
