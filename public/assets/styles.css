@@ -65,6 +65,7 @@ a {
 .hero-content .input-wrap {
     position: relative;
     max-width: 592px;
+    width: 450px;
 }
 
 .latest-home-slider .form-track-group.input-group {
