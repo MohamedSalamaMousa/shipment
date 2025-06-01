@@ -319,13 +319,13 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <!-- App Image -->
-                        <div class="col-md-3 text-center mb-4 mb-md-0 position-relative">
+                        {{-- <div class="col-md-3 text-center mb-4 mb-md-0 position-relative">
                             <img src="{{ asset('assets/images/tetex.webp') }}" class="img-fluid" alt="App Mockup"
                                 style="max-height: 450px;">
-                        </div>
+                        </div> --}}
 
                         <!-- Content -->
-                        <div class="col-md-5">
+                        <div class="col-md-8">
                             <h3 class="fw-bold mb-3">حمّل تطبيق تتكس</h3>
                             <div class="d-flex flex-column gap-2 mb-4">
                                 <div class="d-flex align-items-center gap-2">
@@ -348,7 +348,7 @@
 
                                 <!-- App Store -->
                                 <a href="https://apps.apple.com/eg/app/tetex/id6497331317"
-                                    class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
+                                    class="btn btn-danger d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
                                     <i class="fab fa-apple fa-lg"></i>
                                     <div class="text-start">
                                         <div class="small">Download on</div>
@@ -358,7 +358,7 @@
 
                                 <!-- Google Play -->
                                 <a href="https://play.google.com/store/apps/details?id=com.tetex.app&hl=en"
-                                    class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
+                                    class="btn btn-danger d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
                                     <i class="fab fa-google-play fa-lg"></i>
                                     <div class="text-start">
                                         <div class="small">Get it on</div>
@@ -368,10 +368,10 @@
                             </div>
 
                             <!-- Rating -->
-                            <div class="mt-3">
+                            {{-- <div class="mt-3">
                                 <span class="text-warning fs-4">★★★★★</span>
-                                <div>أكثر من 100,000 تقييم</div>
-                            </div>
+                                <div>المزيد من تقييمات العملاء</div>
+                            </div> --}}
                         </div>
 
                         <!-- Mobile Image (Delivery Man + Phone Mockup) -->
