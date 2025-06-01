@@ -384,7 +384,7 @@
                 </div>
             </div>
 
-            <div class="py-5 bg-white">
+            <div class="py-5 my-5 bg-light">
                 <div class="row align-items-center gy-5 justify-content-between d-flex ">
                     <!-- Text Content -->
                     <div class="col-md-6 text-start">
