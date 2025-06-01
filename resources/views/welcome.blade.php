@@ -368,10 +368,10 @@
                             </div>
 
                             <!-- Rating -->
-                            <div class="mt-3">
+                            {{-- <div class="mt-3">
                                 <span class="text-warning fs-4">★★★★★</span>
                                 <div>المزيد من تقييمات العملاء</div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <!-- Mobile Image (Delivery Man + Phone Mockup) -->
