@@ -348,7 +348,7 @@
 
                                 <!-- App Store -->
                                 <a href="https://apps.apple.com/eg/app/tetex/id6497331317"
-                                    class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
+                                    class="btn btn-danger d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
                                     <i class="fab fa-apple fa-lg"></i>
                                     <div class="text-start">
                                         <div class="small">Download on</div>
@@ -358,7 +358,7 @@
 
                                 <!-- Google Play -->
                                 <a href="https://play.google.com/store/apps/details?id=com.tetex.app&hl=en"
-                                    class="btn btn-dark d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
+                                    class="btn btn-danger d-flex align-items-center gap-2 px-3 py-2 rounded-pill shadow-sm">
                                     <i class="fab fa-google-play fa-lg"></i>
                                     <div class="text-start">
                                         <div class="small">Get it on</div>
@@ -370,7 +370,7 @@
                             <!-- Rating -->
                             <div class="mt-3">
                                 <span class="text-warning fs-4">★★★★★</span>
-                                <div>أكثر من 100,000 تقييم</div>
+                                <div>المزيد من تقييمات العملاء</div>
                             </div>
                         </div>
 
