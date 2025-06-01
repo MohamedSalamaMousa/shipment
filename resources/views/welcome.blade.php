@@ -377,7 +377,7 @@
                         <!-- Mobile Image (Delivery Man + Phone Mockup) -->
                         <div class="col-md-4 text-center mt-5 mt-md-0" id="mobile-image">
                             <!-- Phone App UI Mockup -->
-                            <img src="{{ asset('assets/images/mobile_icon.webp') }}" alt="Mobile App" class="img-fluid"
+                            <img src="{{ asset('assets/images/mobile_icon2.jpg') }}" alt="Mobile App" class="img-fluid"
                                 style="max-height: 550px; z-index: 1;">
                         </div>
                     </div>

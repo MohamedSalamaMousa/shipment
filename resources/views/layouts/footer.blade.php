@@ -26,8 +26,11 @@
                     <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">عن الشركة</a></li>
                     <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">اتصل بنا</a></li>
                     <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">سياسة الخصوصية</a>
+                    <li><a href="{{ route('about') }}" class="text-white-50 text-decoration-none d-block mb-2">من نحن</a>
+                    <li><a href="{{ route('contact') }}" class="text-white-50 text-decoration-none d-block mb-2">تواصل معنا</a>
                     </li>
-                    <li><a href="#" class="text-white-50 text-decoration-none d-block mb-2">الشروط والأحكام</a>
+                    <li><a href="{{ route('terms') }}" class="text-white-50 text-decoration-none d-block mb-2">الشروط
+                            والأحكام</a>
                     </li>
                 </ul>
             </div>

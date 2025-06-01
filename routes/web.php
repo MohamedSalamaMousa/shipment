@@ -24,6 +24,18 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/terms&conditions', function () {
+    return view('terms_conditions');
+})->name('terms');
+
+Route::get('/contact', function () {
+    return view('contactus');
+})->name('contact');
+
+Route::get('/about', function () {
+    return view('about-us');
+})->name('about');
+
 Route::prefix('auth')->controller(AuthController::class)->group(function () {
     Route::get('/register',  'view')->name('register.view');
     Route::post('/register-external',  'register')->name('external.register');
