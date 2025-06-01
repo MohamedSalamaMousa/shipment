@@ -319,13 +319,13 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <!-- App Image -->
-                        <div class="col-md-3 text-center mb-4 mb-md-0 position-relative">
+                        {{-- <div class="col-md-3 text-center mb-4 mb-md-0 position-relative">
                             <img src="{{ asset('assets/images/tetex.webp') }}" class="img-fluid" alt="App Mockup"
                                 style="max-height: 450px;">
-                        </div>
+                        </div> --}}
 
                         <!-- Content -->
-                        <div class="col-md-5">
+                        <div class="col-md-8">
                             <h3 class="fw-bold mb-3">حمّل تطبيق تتكس</h3>
                             <div class="d-flex flex-column gap-2 mb-4">
                                 <div class="d-flex align-items-center gap-2">
