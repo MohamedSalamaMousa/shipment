@@ -156,20 +156,19 @@
                 </div>
 
                 <!-- Carousel Section -->
-                <div class="container w-50 me-0 mt-5">
+                <!-- لودر Spinner -->
+                <div id="carouselLoader" class="text-center my-5">
+                    <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;">
+                        <span class="visually-hidden">جاري التحميل...</span>
+                    </div>
+                </div>
+
+                <!-- الكاروسيل -->
+                <div class="container w-50 me-0 mt-5 d-none" id="carouselContainer">
                     <div id="heroImageCarousel" class="carousel slide shadow rounded-4 overflow-hidden"
                         data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <!-- Slide 1 -->
-                            <div class="carousel-item active">
-                                <img class="w-100 object-fit-fill" style="max-height: 400px !important"
-                                    src="{{ asset('assets/images/67aa0fbd28c0f.png') }}" class="d-block" alt="Slide 1">
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="carousel-item">
-                                <img class="w-100 object-fit-fill" style="max-height: 400px !important"
-                                    src="{{ asset('assets/images/6804c45fee1ce.png') }}" class="d-block" alt="Slide 2">
-                            </div>
+                        <div class="carousel-inner" id="carouselImagesContainer">
+                            <!-- سيتم تعبئة الصور هنا -->
                         </div>
 
                         <!-- Controls -->
@@ -185,6 +184,13 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- رسالة الخطأ -->
+                <div id="carouselError" class="alert alert-danger text-center d-none" role="alert">
+                    حدث خطأ أثناء تحميل الصور. الرجاء المحاولة لاحقاً.
+                </div>
+
+
             </div>
             <!-- Home Options -->
             <div class="home-options mt-5 pt-5">
@@ -405,6 +411,44 @@
 
         </div>
     </section>
+    <script>
+        const loader = document.getElementById('carouselLoader');
+        const container = document.getElementById('carouselContainer');
+        const carouselInner = document.getElementById('carouselImagesContainer');
+        const errorMsg = document.getElementById('carouselError');
+
+        fetch('https://admin.tetexexpress.com/api/images')
+            .then(response => response.json())
+            .then(data => {
+                const images = data.imagesList;
+
+                if (images.length === 0) {
+                    throw new Error('لا توجد صور متاحة');
+                }
+
+                images.forEach((image, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('carousel-item');
+                    if (index === 0) itemDiv.classList.add('active');
+
+                    itemDiv.innerHTML = `
+                <img class="w-100 object-fit-fill" style="max-height: 400px !important"
+                     src="${image.full_path}" alt="Slide ${index + 1}">
+              `;
+
+                    carouselInner.appendChild(itemDiv);
+                });
+
+                // بعد التحميل
+                loader.classList.add('d-none');
+                container.classList.remove('d-none');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                loader.classList.add('d-none');
+                errorMsg.classList.remove('d-none');
+            });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const successMessage = document.getElementById('successMessage');
