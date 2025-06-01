@@ -132,8 +132,8 @@
         <div class="container-fluid">
 
             <!-- Hero Content -->
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="hero-content">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="hero-content col-md-7">
                     <h2>تتبع شحناتك</h2>
                     @if (session('success'))
                         <div id="successMessage" class="alert alert-success">
@@ -142,7 +142,7 @@
                     @endif
                     <div class="form-track-group input-group col-md-12" id="divTrackingNumbers"></div>
 
-                    <div class="input-wrap position-relative mt-4">
+                    <div class="input-wrap position-relative w-100 mt-4">
                         <input type="text" class="form-control" placeholder="ادخل رقم التتبع الخاص بك"
                             id="TrackingNumber" name="TrackingNumber" />
                         <span style="right: 10px" class="position-absolute top-50 text-danger translate-middle-y">
@@ -156,7 +156,7 @@
                 </div>
 
                 <!-- Carousel Section -->
-                <div class="container w-50 me-0 mt-5">
+                <div class="col-md-5 me-0 mt-5">
                     <div id="heroImageCarousel" class="carousel slide shadow rounded-4 overflow-hidden"
                         data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -384,7 +384,7 @@
                 </div>
             </div>
 
-            <div class="py-5 my-5 bg-light">
+            <div style="background-color: #f1f5f9;" class="py-5 my-5">
                 <div class="row align-items-center gy-5 justify-content-between d-flex ">
                     <!-- Text Content -->
                     <div class="col-md-6 text-start">

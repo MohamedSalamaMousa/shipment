@@ -3,7 +3,7 @@
 
 @include('layouts.head')
 
-<body class="min-vh-100 bg-light">
+<body class="min-vh-100 bg-light overflow-x-hidden">
     @include('layouts.nav')
 
     @yield('content')
