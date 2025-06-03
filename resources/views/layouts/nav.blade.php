@@ -1,7 +1,7 @@
 <header class="position-relative">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav style="background-color: #ffffff;" class="navbar navbar-expand-lg">
         <div class="container-fluid px-3">
-            <a class="navbar-brand fw-bold text-danger" href="{{ route('home') }}"><img src="{{ asset('assets/images/logo.jpg') }}" alt="Logo" style="width: 50px; height: 50px;"></a>
+            <a class="navbar-brand fw-bold text-danger" href="{{ route('home') }}"><img style="width: 85px; height: 85px;" class="rounded-circle" src="{{ asset('assets/images/logo2.png') }}" alt="Logo" style="width: 50px; height: 50px;"></a>
 
             <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
