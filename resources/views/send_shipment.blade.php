@@ -1,5 +1,42 @@
 @extends('layouts.master')
 @section('title', 'ارسال شحنة')
+
+
+<style>
+    /* تكبير خطوط العناوين */
+    .step-indicator .step div {
+        font-size: 1.2rem !important;
+        font-weight: bold;
+    }
+
+    /* تكبير تسميات الحقول */
+    label.form-label {
+        font-size: 1.1rem !important;
+        font-weight: 600;
+    }
+
+    /* تكبير حجم الخط داخل الحقول */
+    input.form-control,
+    select.form-select {
+        font-size: 1.1rem !important;
+        padding: 0.75rem !important;
+    }
+
+    /* تكبير زر التالي والعودة */
+    .btn {
+        font-size: 1.1rem !important;
+    }
+
+    /* تكبير النص في الرسائل التحذيرية */
+    #formErrors {
+        font-size: 1rem;
+    }
+
+    /* تكبير عناوين خطوات الشحن */
+    h5.fw-bold {
+        font-size: 1.5rem !important;
+    }
+</style>
 @section('content')
     <section id="steps" class="min-vh-100 d-flex align-items-center justify-content-center">
         <div class="container bg-white p-4 rounded shadow" style="max-width: 900px">

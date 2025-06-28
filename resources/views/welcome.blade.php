@@ -333,7 +333,7 @@
 
                         <!-- Content -->
                         <div class="col-md-8">
-                            <h3 class="fw-bold mb-3">حمّل تطبيق تتكس</h3>
+                            <h3 class="fw-bold mb-3">حمّل تطبيق <span class="text-danger">تيتيكس</span> </h3>
                             <div class="d-flex flex-column gap-2 mb-4">
                                 <div class="d-flex align-items-center gap-2">
                                     <i class="bi bi-geo-alt-fill text-danger fs-5"></i>
@@ -384,7 +384,7 @@
                         <!-- Mobile Image (Delivery Man + Phone Mockup) -->
                         <div class="col-md-4 text-center mt-5 mt-md-0" id="mobile-image">
                             <!-- Phone App UI Mockup -->
-                            <img src="{{ asset('assets/images/mobile_icon2.jpg') }}" alt="Mobile App" class="img-fluid"
+                            <img src="{{ asset('assets/images/mobile_icon3.png') }}" alt="Mobile App" class="img-fluid"
                                 style="max-height: 550px; z-index: 1;">
                         </div>
                     </div>

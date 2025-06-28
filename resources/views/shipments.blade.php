@@ -9,51 +9,52 @@
         }
 
         .header {
-            background-color: #121e27;
+            background-color: #fff;
             padding: 20px 0;
             text-align: center;
-            color: #fff;
+            color: #dc3545;
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
         }
 
         .nav-tabs {
             justify-content: center;
-            border-bottom: 1px solid #34495e;
+            border-bottom: 1px solid #ccc;
         }
 
         .nav-tabs .nav-link {
-            color: #ccc;
+            color: #555;
             font-weight: bold;
             border: none;
             background: none;
         }
 
         .nav-tabs .nav-link.active {
-            background-color: #1c2833;
+            background-color: #dc3545;
             color: #fff !important;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            border: 1px solid #34495e;
-            border-bottom: none;
+            border-radius: 10px;
+            padding: 8px 20px;
         }
 
         .shipments-container {
             padding: 20px 10px;
-            background-color: #f7f9fa;
+            background-color: #f8f9fa;
         }
 
         .shipment-card {
-            background-color: #2c3e50;
-            border-radius: 15px;
+            background-color: #fff;
+            border-radius: 16px;
             padding: 20px;
             margin-bottom: 20px;
-            border: 1px solid #34495e;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            color: #fff;
+            color: #333;
         }
 
         .shipment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(220, 53, 69, 0.15);
         }
 
         .shipment-status {
@@ -65,19 +66,20 @@
 
         .status,
         .amount {
-            padding: 6px 15px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-weight: bold;
             font-size: 14px;
             margin-bottom: 10px;
+            color: white;
         }
 
         .status {
-            background-color: #1abc9c;
+            background-color: #dc3545;
         }
 
         .amount {
-            background-color: #27ae60;
+            background-color: #6c757d;
         }
 
         .shipment-info {
@@ -86,13 +88,16 @@
 
         .shipment-info p {
             margin: 6px 0;
+            color: #555;
         }
 
         .shipment-info strong {
             font-size: 16px;
             display: block;
             margin-bottom: 5px;
+            color: #000;
         }
+
 
         @media (min-width: 768px) {
             .shipment-card {

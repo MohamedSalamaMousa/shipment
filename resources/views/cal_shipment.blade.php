@@ -76,50 +76,6 @@
         /* Enhanced shadow on hover */
     }
 
-    /* #shipping-price-result {
-        background-color: #f8f9fa;
-        border: 2px solid #dc3545;
-        color: #212529;
-        border-radius: 15px;
-        padding: 20px;
-        font-size: 15px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: right;
-        direction: rtl;
-        transition: all 0.3s ease-in-out;
-    }
-
-    #shipping-price-result::before {
-        content: "🚚 ";
-        font-size: 18px;
-        margin-left: 8px;
-        vertical-align: middle;
-    }
-
-    #global-shipping-price-result {
-        background-color: #f8f9fa;
-        border: 2px solid #dc3545;
-        color: #212529;
-        border-radius: 15px;
-        padding: 20px;
-        font-size: 15px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: right;
-        direction: rtl;
-        transition: all 0.3s ease-in-out;
-    }
-
-    #global-shipping-price-result::before {
-        content: "🌍 ";
-        font-size: 18px;
-        margin-left: 8px;
-        vertical-align: middle;
-    } */
-
     .alert-shipping-custom {
         background-color: #f9f9f9;
         color: #333;
@@ -153,6 +109,71 @@
         margin-left: 10px;
         font-size: 1rem;
         color: #555;
+    }
+
+    /* تكبير وتنسيق نتائج السعر */
+    .alert-shipping-custom {
+        font-size: 1.1rem !important;
+        line-height: 1.9;
+        padding: 24px !important;
+        border-radius: 16px !important;
+    }
+
+    .alert-shipping-custom .shipping-detail {
+        font-size: 1.1rem !important;
+        margin-bottom: 12px !important;
+    }
+
+    .alert-shipping-custom strong {
+        font-weight: 700;
+    }
+
+    .alert-shipping-custom i {
+        font-size: 1.2rem !important;
+        color: #dc3545;
+        margin-left: 10px;
+    }
+
+    /* عند الضغط على "تفاصيل أكثر" */
+    #moreDetails {
+        padding: 15px 20px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        /* bold */
+        color: #333;
+        background-color: #fdfdfd;
+        border: 2px dashed #dc3545;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(220, 53, 69, 0.05);
+        margin-top: 16px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* كل بند داخل التفاصيل */
+    #moreDetails div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        transition: background 0.2s;
+    }
+
+    #moreDetails div:hover {
+        background-color: #f8f8f8;
+    }
+
+    /* الأيقونات */
+    #moreDetails i {
+        color: #28a745;
+        font-size: 1.1rem;
+        min-width: 18px;
+    }
+
+    label.form-label {
+        font-size: 1.1rem !important;
+        font-weight: 600;
     }
 
 
