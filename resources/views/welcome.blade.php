@@ -333,7 +333,7 @@
 
                         <!-- Content -->
                         <div class="col-md-8">
-                            <h3 class="fw-bold mb-3">حمّل تطبيق <span class="text-danger">تيتيكس</span> </h3>
+                            <h3 class="fw-bold mb-3">حمّل تطبيق <span class="text-danger">تيتكس</span> </h3>
                             <div class="d-flex flex-column gap-2 mb-4">
                                 <div class="d-flex align-items-center gap-2">
                                     <i class="bi bi-geo-alt-fill text-danger fs-5"></i>
